@@ -93,7 +93,7 @@ import { ref } from 'vue';
         --card-offset: v-bind(offset);
         --card-size: v-bind(size);
         --card-text-color: black;
-        --card-bg-color: white;
+        --card-bg-color: darkgray;
         --card-padding: 2.5rem;
         --card-radius: 25px;
 
