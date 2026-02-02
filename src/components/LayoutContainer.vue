@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   defineProps({
     mainTextColor: { type: String, default: 'black' },
     subTextColor: { type: String, default: 'black' },

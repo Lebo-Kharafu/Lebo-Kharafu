@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
     defineProps({
@@ -12,7 +12,7 @@ import { ref } from 'vue';
 
     const activeIndex = ref(1);
 
-    const getPos = (cardIndex) => {
+    const getPos = (cardIndex:number) => {
         const diff = (cardIndex - activeIndex.value + 3) % 3;
         if (diff === 0) return 'pos-1';
         if (diff === 1) return 'pos-2';
