@@ -26,4 +26,11 @@
         }
     }
 
+    @media (max-width: 430px) {
+        #side-sub {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
 </style>
