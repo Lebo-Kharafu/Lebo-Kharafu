@@ -1,0 +1,15 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    min-width: 100dvw;
+    min-height: 100dvh;
+}
+
+#app{
+  width: 100dvw;
+  height: 100dvh;
+}

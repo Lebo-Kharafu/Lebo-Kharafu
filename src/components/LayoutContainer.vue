@@ -54,7 +54,7 @@
 
 <style scoped>
   .container {
-    --glob-mobile-height: auto;
+    --glob-mobile-height: 100%;
     --glob-mobile-width: 100%;
     --glob-padding: 2rem;
 
