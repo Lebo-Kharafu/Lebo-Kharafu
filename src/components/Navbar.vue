@@ -15,9 +15,9 @@
     
 <template>
   <nav id="navbar">
-    <div v-for="i in links" class="icon">
+    <figure v-for="i in links" class="icon">
       <img :src="i.icon" :alt="i.alt">
-    </div>
+    </figure>
   </nav>
 </template>
 

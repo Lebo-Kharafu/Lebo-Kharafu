@@ -12,20 +12,21 @@
 
 <template>
   <section class="container">
+
     <section class="main-content">
       <img v-if="image" :src="image" class="bg-img" />
-      <div class="text-content">
+      <article class="text-content">
         <slot name="main">
           Default Main-Content
         </slot>
-      </div>
+      </article>
     </section>
 
-    <article class="sub-content">
+    <aside class="sub-content">
       <slot name="sub">
         Default Sub-Content
       </slot>
-    </article>
+    </aside>
 
     <svg width="0" height="0" style="position: absolute; pointer-events: none;">
       <defs>
@@ -47,6 +48,7 @@
         </clipPath>
       </defs>
     </svg>
+
   </section>
 </template>
 

@@ -20,41 +20,38 @@ import { ref } from 'vue';
     }
 </script>
 
-<template>
-    <div class="stack-layout">
-
-        <div class="stack-title" v-if="title">
+<template class="stack-layout">
+        <section class="stack-title" v-if="title">
             {{ title }}
-        </div>
+        </section>
 
-        <div class="cards-wrapper">
+        <section class="cards-wrapper">
             
-            <article class="card" :class="getPos(1)">
+            <figure class="card" :class="getPos(1)">
                 <img v-if="image1" :src="image1" class="card-bg" alt="Card background" />
                 <div class="pill-badge" @click="activeIndex = 1">01</div>
-                <div class="card-content">
+                <article class="card-content">
                     <slot name="card-1"></slot>
-                </div>
-            </article>
+                </article>
+            </figure>
 
-            <article class="card" :class="getPos(2)">
+            <figure class="card" :class="getPos(2)">
                 <img v-if="image2" :src="image2" class="card-bg" alt="Card background" />
                 <div class="pill-badge" @click="activeIndex = 2">02</div>
-                <div class="card-content">
+                <article class="card-content">
                     <slot name="card-2"></slot>
-                </div>
-            </article>
+                </article>
+            </figure>
 
-            <article class="card" :class="getPos(3)">
+            <figure class="card" :class="getPos(3)">
                 <img v-if="image3" :src="image3" class="card-bg" alt="Card background" />
                 <div class="pill-badge" @click="activeIndex = 3">03</div>
-                <div class="card-content">
+                <article class="card-content">
                     <slot name="card-3"></slot>
-                </div>
-            </article>
+                </article>
+            </figure>
 
-        </div>
-    </div>
+        </section>
 </template>
 
 <style scoped>
