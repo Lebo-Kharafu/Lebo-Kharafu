@@ -1,22 +1,30 @@
     <script setup lang="ts">
-      import type { PropType } from 'vue';
-
       import type { Link } from '../interfaces/props/Links';
-      const props = defineProps({
-        links: {
-          type: Array as PropType<Link[]>,
-          default: () => [
+      const props = withDefaults(
+        defineProps<{ links: Link[]; avatar?: Link }>(),
+        {
+          links: () => [
             { icon: '../../public/vite.svg', alt: 'image' },
             { icon: '../../public/vite.svg', alt: 'image' }
-          ]
+          ],
+          avatar: () => ({ icon: '../../src/assets/img/kharafu-high-resolution-logo.ico', alt: 'image' })
         }
-      });
+      );
+
+
 </script>
     
 <template>
   <nav id="navbar">
-    <figure v-for="i in links" class="icon">
-      <img :src="i.icon" :alt="i.alt">
+    <section id="nav-icons">
+
+      <figure v-for="i in props.links" class="icon">
+        <img :src="i.icon" :alt="i.alt">
+      </figure>
+
+    </section>
+    <figure v-if="props.avatar.icon" id="avatar" class="icon">
+      <img :src="props.avatar.icon" :alt="props.avatar.alt">
     </figure>
   </nav>
 </template>
@@ -26,29 +34,39 @@
 <style scoped>
 
   .icon {
-    border-radius: 50%;
-    border: 1px solid black;
-    min-width: 45px;
-    min-height: 45px;
-    max-width: 50px;
-    max-height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1px;
+
+    width: 30px;
+    height: 30px;
+  }
+
+  .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
   }
 
   #navbar {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    gap: 1rem;
-    max-width: 3rem;
+    justify-content: space-between;
+    
+    
+    height: 100%;
+    width: 100%;
     padding: 5px;
     border-radius: 25px;
-
+    
     background-color: #3d3d3d;
+  }
+  
+  #nav-icons{  
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>
