@@ -27,8 +27,13 @@
     </section>
     <section id="side">
       <StackCards width="100%" height="270px">
+        <template #badge-1></template>
         <template #card-1></template>
+
+        <template #badge-2></template>
         <template #card-2></template>
+
+        <template #badge-3></template>
         <template #card-3></template>
       </StackCards>
       <SubBox>

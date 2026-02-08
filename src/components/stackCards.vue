@@ -26,7 +26,7 @@ const getPos = (cardIndex: number) => {
 
             <figure class="card" :class="getPos(1)" @click="activeIndex = 1">
                 <img v-if="image1" :src="image1" class="card-bg" alt="Card 1" />
-                <div class="pill-badge">01</div>
+                <div class="pill-badge"><slot name="badge-1">01</slot></div>
                 <article class="card-content">
                     <slot name="card-1"></slot>
                 </article>
@@ -34,7 +34,7 @@ const getPos = (cardIndex: number) => {
 
             <figure class="card" :class="getPos(2)" @click="activeIndex = 2">
                 <img v-if="image2" :src="image2" class="card-bg" alt="Card 2" />
-                <div class="pill-badge">02</div>
+                <div class="pill-badge"><slot name="badge-2">02</slot></div>
                 <article class="card-content">
                     <slot name="card-2"></slot>
                 </article>
@@ -42,7 +42,7 @@ const getPos = (cardIndex: number) => {
 
             <figure class="card" :class="getPos(3)" @click="activeIndex = 3">
                 <img v-if="image3" :src="image3" class="card-bg" alt="Card 3" />
-                <div class="pill-badge">03</div>
+                <div class="pill-badge"><slot name="badge-3">03</slot></div>
                 <article class="card-content">
                     <slot name="card-3"></slot>
                 </article>
@@ -59,7 +59,6 @@ const getPos = (cardIndex: number) => {
         align-items: center;
         justify-content: center;
         width: 100%;
-        /* padding: 20px; */
     }
 
     .cards-wrapper {
@@ -83,7 +82,6 @@ const getPos = (cardIndex: number) => {
         overflow: hidden;
         cursor: pointer;
         
-        /* box-shadow: 0 10px 25px rgba(0,0,0,0.15); */
         transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -120,11 +118,14 @@ const getPos = (cardIndex: number) => {
 
     .pill-badge {
         position: absolute;
-        top: 30px;
-        left: 15px;
+        top: 15px;
+        left: 30px;
         
-        width: 28px;
-        height: 50px;
+        min-width: 50px;
+        min-height: 25px;
+
+
+        padding: clamp(2px, 5dvw, 5px);
         
         border: 1px solid rgba(0,0,0,0.1);
         background: rgba(255,255,255,0.6);
