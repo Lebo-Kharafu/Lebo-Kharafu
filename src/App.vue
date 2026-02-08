@@ -8,7 +8,8 @@
         { icon: 'https://img.icons8.com/?size=65&id=63777&format=png&color=000000', alt: 'image' },
         { icon: 'https://img.icons8.com/?size=65&id=34886&format=png&color=000000', alt: 'image' },
         { icon: 'https://img.icons8.com/?size=100&id=aE4hnRenCYJB&format=png&color=000000', alt: 'image' },
-      ]" :avatar="{ icon: './vite.svg', alt: 'image' }" 
+      ]" :avatar="{ icon: './vite.svg', alt: 'image' }",
+      direction="col"
       />
     </section>
     <section id="mid">
@@ -25,7 +26,7 @@
       </LayoutContainer>
     </section>
     <section id="side">
-      <StackCards width="100%" height="210px">
+      <StackCards width="100%" height="270px">
         <template #card-1></template>
         <template #card-2></template>
         <template #card-3></template>
