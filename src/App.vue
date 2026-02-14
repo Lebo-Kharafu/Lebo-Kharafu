@@ -55,8 +55,8 @@ import SubBox from "./components/SubBox.vue";
 import { useWindowSize } from '@vueuse/core';
 const { width } = useWindowSize();
 const navDirection = computed(() => {
-  if (width.value < 780) return 'row'
-  if (width.value < 430) return 'col'
+  if (width.value <= 780) return 'row'
+  if (width.value <= 430) return 'col'
   return 'col'
 })
 </script>
