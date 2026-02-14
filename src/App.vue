@@ -9,7 +9,7 @@
         { icon: 'https://img.icons8.com/?size=65&id=34886&format=png&color=000000', alt: 'image' },
         { icon: 'https://img.icons8.com/?size=100&id=aE4hnRenCYJB&format=png&color=000000', alt: 'image' },
       ]" :avatar="{ icon: './vite.svg', alt: 'image' }",
-      direction="col"
+      :direction="navDirection"
       />
     </section>
     <section id="mid">
@@ -46,10 +46,19 @@
 </template>
 
 <script setup lang="ts">
-  import LayoutContainer from "./components/LayoutContainer.vue";
+  import { computed } from "vue";
+import LayoutContainer from "./components/LayoutContainer.vue";
   import Navbar from "./components/Navbar.vue";
   import StackCards from "./components/StackCards.vue";
 import SubBox from "./components/SubBox.vue";
+
+import { useWindowSize } from '@vueuse/core';
+const { width } = useWindowSize();
+const navDirection = computed(() => {
+  if (width.value < 780) return 'row'
+  if (width.value < 430) return 'col'
+  return 'col'
+})
 </script>
 
 
