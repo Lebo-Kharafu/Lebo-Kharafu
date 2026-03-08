@@ -25,8 +25,8 @@
   --p-size: 1rem;
   --h1-size: clamp(2rem, 6dvw, 4rem);;
   --h2-size: clamp(1.5rem, 4dvw, 2rem);;
-  --h3-size: clamp(1rem, 1.5dvw, 1.5rem);
-  --h4-size: clamp(0.8rem, 1.2dvw, 1rem);;
+  --h3-size: clamp(1rem, 2dvw, 1.5rem);
+  --h4-size: clamp(0.8rem, 1.5dvw, 1rem);;
   --btn-text-size: 0.9rem;
 }
 
