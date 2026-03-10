@@ -6,8 +6,10 @@ const props = defineProps({
     image2: String,
     image3: String,
     height: { type: String, default: '300px' }, 
-    width: { type: String, default: '220px' },
-    offset: { type: String, default: '70px' }, 
+    width: { type: String, default: '250px' },
+    offset: { type: String, default: '63px' }, 
+    textColor: { type: String, default: 'var(--color-text)'},
+    color: { type: String, default: 'var(--color-surface)' },
 });
 
 const activeIndex = ref(1);
@@ -59,6 +61,8 @@ const getPos = (cardIndex: number) => {
         align-items: center;
         justify-content: center;
         width: 100%;
+        padding: 0;
+        margin: 0;
     }
 
     .cards-wrapper {
@@ -69,15 +73,15 @@ const getPos = (cardIndex: number) => {
 
     .card {
         --card-offset: v-bind(offset);
-        --card-radius: 25px;
-        --pill-border: #3d3d3d;
+        --card-radius: calc(var(--radius-xl) + 1.75%);
         margin: 0;
 
         position: absolute;
         width: 100%;
         height: v-bind(height);
         
-        background-color: #f0f0f0; 
+        background-color: v-bind(color); 
+        border: var(--color-muted) solid var(--border-sm);
         border-radius: var(--card-radius);
         overflow: hidden;
         cursor: pointer;
@@ -127,8 +131,8 @@ const getPos = (cardIndex: number) => {
 
         padding: clamp(2px, 5dvw, 5px);
         
-        border: 1px solid rgba(0,0,0,0.1);
-        background: rgba(255,255,255,0.6);
+        border: 1px solid var(--color-accent);
+        background: var(--color-accent);
         backdrop-filter: blur(5px);
         border-radius: 50px;
         
@@ -136,7 +140,7 @@ const getPos = (cardIndex: number) => {
         justify-content: center;
         align-items: center;
         
-        color: #333;
+        color:  var(--color-text);
         font-weight: 700;
         font-size: 0.85rem;
         z-index: 2;

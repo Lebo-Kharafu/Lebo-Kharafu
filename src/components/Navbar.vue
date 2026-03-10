@@ -16,7 +16,7 @@
 </script>
     
 <template>
-  <nav v-if="direction === 'row'" id="navbar-row">
+  <nav v-if="direction === 'row'" id="navbar-row" class="nav-gen">
     <section id="nav-icons-row">
 
       <figure v-for="i in props.links" class="icon-row">
@@ -29,7 +29,7 @@
     </figure>
   </nav>
 
-  <nav v-if="direction === 'col'" id="navbar-col">
+  <nav v-if="direction === 'col'" id="navbar-col"  class="nav-gen">
     <section id="nav-icons-col">
 
       <figure v-for="i in props.links" class="icon-col">
@@ -46,6 +46,10 @@
 
 
 <style scoped>
+
+  .nav-gen{
+    background-color: var(--color-surface);
+  }
 
   .icon-row {
     margin: 0;
@@ -75,7 +79,6 @@
     border-radius: 25px;
     padding: 0.5rem;
 
-    background-color: #3d3d3d;
   }
 
   #nav-icons-row {
@@ -114,8 +117,6 @@
     padding: 5px;
     border-radius: 25px;
     padding: 0.5rem;
-
-    background-color: #3d3d3d;
   }
 
   #nav-icons-col {

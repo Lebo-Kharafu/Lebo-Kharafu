@@ -16,6 +16,11 @@
   --radius-lg:  16px;
   --radius-xl: 25px;
 
+  --border-sm: 0.25px;
+  --border-md: 0.5px;
+  --border-lg: 0.75px;
+  --border-xl: 1px;
+
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 32px rgba(194, 6, 15, 0.18);
 
@@ -137,7 +142,7 @@ strong { color: var(--color-heading); font-weight: 500; }
 
 ::selection {
   /* background-color: rgba(194, 6, 15, 0.3); */
-  background-color: hsl(from var(--color-accent) h s l / 0.6); 
+  background-color: hsl(from var(--color-accent) h s l / 1.0); 
   color: var(--color-heading);
 }
 

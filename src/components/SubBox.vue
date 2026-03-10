@@ -15,8 +15,9 @@
         padding: 1rem;
         width: 100%;
         height: 50%;
-        border: 1px solid black;
-        border-radius: 25px;
+        border: var(--border-xl) solid var(--color-muted);
+        border-radius: calc(var(--radius-lg));
+        background-color: var(--color-surface);
     }
 
     @media (max-width: 780px) {

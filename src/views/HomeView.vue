@@ -11,11 +11,24 @@
             ]" :avatar="{ icon: './vite.svg', alt: 'image' }" , :direction="navDirection" />
         </section>
         <section id="mid">
-            <LayoutContainer image="../src/assets/inspo/content.jpg" height="100%" width="100%"
-                main-text-color="#fa803a" sub-color="#fa803a">
+            <!-- image="../../public/20260125_153406.jpg"  -->
+            <LayoutContainer 
+                height="100%" width="100%"
+                main-text-color='var(--color-surface)' main-color='var(--color-surface)'
+                sub-color='var(--color-surface)'>
 
                 <template #main>
-                    {{ }}
+                    <section>
+                        <h1>Lebo K</h1>
+                        <h3>Junior Software Engineer</h3>
+                    </section>
+                    <section style="padding-top: 40dvh;">
+                        <h2>About</h2>
+                        <p>{{ aboutText }}</p>
+                        <hr>
+
+                    </section>
+
                 </template>
                 <template #sub>
                     <h1> Bigger Sub stuff</h1>
@@ -34,9 +47,11 @@
                 <template #badge-3></template>
                 <template #card-3></template>
             </StackCards>
-            <SubBox>
+            <SubBox >
                 <template #content>
-                    {{ "Hello" }}
+                    <p style="font-size: 3rem;">
+                        {{ "Hello Subbox" }}
+                    </p>
                 </template>
             </SubBox>
         </section>
@@ -44,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-    import { computed } from "vue";
+    import { computed, ref } from "vue";
     import LayoutContainer from "../components/LayoutContainer.vue";
     import Navbar from "../components/Navbar.vue";
     import StackCards from "../components/StackCards.vue";
@@ -57,6 +72,8 @@
         if (width.value <= 430) return 'col'
         return 'col'
     })
+
+    const aboutText = ref("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim anim id est laborum.")
 </script>
 
 
