@@ -20,6 +20,7 @@
   --border-md: 0.5px;
   --border-lg: 0.75px;
   --border-xl: 1px;
+  --border-xxl: 2px;
 
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 32px rgba(194, 6, 15, 0.18);
