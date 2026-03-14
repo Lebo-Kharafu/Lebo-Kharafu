@@ -5,7 +5,7 @@ const props = defineProps({
     image1: String,
     image2: String,
     image3: String,
-    height: { type: String, default: '300px' }, 
+    height: { type: String, default: '240px' }, 
     width: { type: String, default: '250px' },
     offset: { type: String, default: '63px' }, 
     textColor: { type: String, default: 'var(--color-text)'},

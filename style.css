@@ -29,11 +29,12 @@
   --max-width: 1100px;
 
   --p-size: 1rem;
+  --p-bottom-gap: 1dvh;
   --h1-size: clamp(2rem, 6dvw, 4rem);;
   --h2-size: clamp(1.5rem, 4dvw, 2rem);;
   --h3-size: clamp(1rem, 2dvw, 1.5rem);
-  --h4-size: clamp(0.8rem, 1.5dvw, 1rem);;
-  --btn-text-size: 0.9rem;
+  --h4-size: clamp(0.8rem, 1.5dvw, 1rem);
+  --h-bottom-gap: 1dvh;
 }
 
 *, *::before, *::after {
@@ -64,6 +65,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   color: var(--color-heading);
+  padding-bottom: var(--h-bottom-gap);
 }
 
 h1 { font-size:  var(--h1-size)}
@@ -71,7 +73,10 @@ h2 { font-size: var(--h2-size) }
 h3 { font-size: var(--h3-size) }
 h4 { font-size: var(--h4-size); font-family: var(--font-body); }
 
-p  { color: var(--color-text); }
+p { 
+  color: var(--color-text);
+  padding-bottom: var(--p-bottom-gap);
+}
 
 a {
   color: var(--color-accent);

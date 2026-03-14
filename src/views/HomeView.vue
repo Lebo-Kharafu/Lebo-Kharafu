@@ -22,7 +22,7 @@
                         <h1>Lebo K</h1>
                         <h3>Junior Software Engineer</h3>
                     </section>
-                    <section style="padding-top: 40dvh;">
+                    <section style="padding-top: 10dvh;">
                         <h2>About</h2>
                         <p>{{ aboutText }}</p>
                         <hr>
@@ -37,7 +37,7 @@
             </LayoutContainer>
         </section>
         <section id="side">
-            <StackCards width="100%" height="270px">
+            <StackCards width="100%" height="240px">
                 <template #badge-1></template>
                 <template #card-1></template>
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+    import { useWindowSize } from '@vueuse/core';
+  import { computed } from 'vue';
   defineProps({
     mainTextColor: { type: String, default: 'black' },
     subTextColor: { type: String, default: 'black' },
@@ -8,6 +10,12 @@
     width: { type: String, default: '600px' },
     image: String,
   });
+
+    const { width } = useWindowSize();
+    const bigScreen = computed(() => {
+        if (width.value <= 430) return false
+        return true
+    })
 </script>
 
 <template>
@@ -16,6 +24,8 @@
     <section class="main-content">
       <img v-if="image" :src="image" class="bg-img" />
       <article class="text-content">
+        <div class="sub-spacer" v-if="bigScreen"></div>
+        <div class="sub-pusher" v-if="bigScreen"></div>
         <slot name="main">
           Default Main-Content
         </slot>
@@ -53,10 +63,20 @@
 </template>
 
 <style scoped>
+  * {
+    --sub-height: calc(40% - 20px);
+    --sub-width: calc(60% - 20px);
+
+    --push-size-top: 1.5rem;
+    --push-size-left: 2rem;
+    --pusher-width: calc(var(--push-size-left) + var(--sub-width));
+    --pusher-height: calc(var(--push-size-top) + var(--sub-height));
+  }
+
   .container {
     --glob-mobile-height: 100%;
     --glob-mobile-width: 100%;
-    --glob-padding: 2rem;
+    --glob-padding: 1rem;
 
     --container-height: v-bind(height);
     --container-width: v-bind(width);
@@ -69,17 +89,35 @@
     --main-width: 100%;
 
     --sub-text-color: v-bind(subTextColor);
-    --sub-height: calc(40% - 20px);
     --sub-color: v-bind(subColor);
-    --sub-width: calc(60% - 20px);
     --sub-border-rad: 20px;
     --sub-bottom: 0px;
     --sub-right: 0px;
+
+    --spacer-width: 0px;
+    --spacer-height: 60%;
+
 
     border-radius: var(--container-border-rad);
     width: min(var(--container-width), 100%);
     height: var(--container-height);
     position: relative;
+  }
+
+  .sub-spacer {
+    float: right;
+    width: var(--spacer-width);
+    height: var(--spacer-height);
+  }
+
+  .sub-pusher {
+    float: right;
+    clear: right;
+    width: var(--pusher-width);
+    height: var(--pusher-height);
+    border-radius: var(--sub-border-rad);
+    background: transparent;
+    pointer-events: none;
   }
 
   .main-content {
@@ -124,6 +162,7 @@
     right: var(--sub-right);
     position: absolute;
 
+    padding: var(--glob-padding);
     justify-content: center;
     align-items: center;
     display: flex;
