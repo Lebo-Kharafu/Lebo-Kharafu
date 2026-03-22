@@ -181,7 +181,7 @@
       border-radius: var(--main-border-rad);
       height: var(--glob-mobile-height);
       width: var(--glob-mobile-width);
-      min-height: 200px;
+      min-height: fit-content;
       clip-path: none;
 
       overflow: hidden;

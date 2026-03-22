@@ -1,13 +1,14 @@
-    <script setup lang="ts">
+<script setup lang="ts">
+      import { Icon } from '@iconify/vue';
       import type { Link } from '../interfaces/props/Links';
       const props = withDefaults(
-        defineProps<{ links: Link[]; avatar?: Link; direction?: "row" | "col" }>(),
+        defineProps<{ links: Link[]; avatar: Link; direction: "row" | "col" }>(),
         {
           links: () => [
-            { icon: '../../public/vite.svg', alt: 'image' },
-            { icon: '../../public/vite.svg', alt: 'image' }
+            { icon: 'mdi:github', alt: 'image' },
+            { icon: 'mdi:linkedin', alt: 'image' }
           ],
-          avatar: () => ({ icon: '../../src/assets/img/kharafu-high-resolution-logo.ico', alt: 'image' }),
+          avatar: () => ({ icon: 'mdi-light:home', alt: 'image' }),
           direction: 'col'
         }
       );
@@ -16,38 +17,37 @@
 </script>
     
 <template>
-  <nav v-if="direction === 'row'" id="navbar-row" class="nav-gen">
-    <section id="nav-icons-row">
+  <nav v-if="direction === 'row'" :id="`navbar-${direction}`" class="nav-gen">
+    <section :id="`nav-icons-${direction}`">
 
-      <figure v-for="i in props.links" class="icon-row">
+      <figure v-for="i in props.links" :class="[`icon-${direction}`]">
         <img :src="i.icon" :alt="i.alt">
       </figure>
 
     </section>
-    <figure v-if="props.avatar.icon" id="avatar" class="icon-row">
-      <img :src="props.avatar.icon" :alt="props.avatar.alt">
+    <figure v-if="props.avatar.icon" id="avatar" :class="[`icon-${direction}`]">
+      <Icon :icon="props.avatar.icon" />
     </figure>
   </nav>
-
-  <nav v-if="direction === 'col'" id="navbar-col"  class="nav-gen">
-    <section id="nav-icons-col">
-
-      <figure v-for="i in props.links" class="icon-col">
-        <img :src="i.icon" :alt="i.alt">
+  
+  <nav v-if="direction === 'col'" :id="`navbar-${direction}`" class="nav-gen">
+    <section :id="`nav-icons-${direction}`">
+      
+      <figure v-for="i in props.links" :class="[`icon-${direction}`]">
+        <Icon :icon="i.icon" />
       </figure>
-
+      
     </section>
-    <figure v-if="props.avatar.icon" id="avatar" class="icon-col">
-      <img :src="props.avatar.icon" :alt="props.avatar.alt">
+    <figure v-if="props.avatar.icon" id="avatar" :class="[`icon-${direction}`]">
+      <Icon :icon="props.avatar.icon" />
     </figure>
   </nav>
 </template>
 
 
-
 <style scoped>
 
-  .nav-gen{
+  .nav-gen {
     background-color: var(--color-surface);
   }
 

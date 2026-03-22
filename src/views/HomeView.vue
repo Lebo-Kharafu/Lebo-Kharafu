@@ -2,36 +2,43 @@
     <section id="page">
         <section id="nav">
             <Navbar :links="[
-                { icon: 'https://img.icons8.com/?size=65&id=13930&format=png&color=000000', alt: 'image' },
-                { icon: 'https://img.icons8.com/?size=65&id=32323&format=png&color=000000', alt: 'image' },
-                { icon: 'https://img.icons8.com/?size=65&id=118640&format=png&color=000000', alt: 'image' },
-                { icon: 'https://img.icons8.com/?size=65&id=63777&format=png&color=000000', alt: 'image' },
-                { icon: 'https://img.icons8.com/?size=65&id=34886&format=png&color=000000', alt: 'image' },
-                { icon: 'https://img.icons8.com/?size=100&id=aE4hnRenCYJB&format=png&color=000000', alt: 'image' },
-            ]" :avatar="{ icon: './vite.svg', alt: 'image' }" , :direction="navDirection" />
+                { icon: 'mdi:linkedin', alt: 'image' },
+                { icon: 'mdi:github', alt: 'image' },
+                { icon: 'jam:gitlab', alt: 'image' },
+                { icon: 'ic:baseline-tiktok', alt: 'image' },
+                { icon: 'mdi:instagram', alt: 'image' },
+                { icon: 'simple-icons:kofi', alt: 'image' },
+                { icon: 'cib:codewars', alt: 'image' },
+            ]" :avatar="{ icon: 'mdi:home', alt: 'image' }" , :direction="navDirection" />
         </section>
         <section id="mid">
             <!-- image="../../public/20260125_153406.jpg"  -->
-            <LayoutContainer 
-                height="100%" width="100%"
-                main-text-color='var(--color-surface)' main-color='var(--color-surface)'
-                sub-color='var(--color-surface)'>
+            <LayoutContainer height="100%" width="100%" main-text-color='var(--color-surface)'
+                main-color='var(--color-surface)' sub-color='var(--color-surface)'>
 
                 <template #main>
                     <section>
-                        <h1>Lebo K</h1>
-                        <h3>Junior Software Engineer</h3>
+                        <h1>Lebo Kharafu</h1>
+                        <h3 class="hero-role">Junior <em>Software Engineer</em> &nbsp;·&nbsp; 1 yrs exp</h3>
                     </section>
-                    <section style="padding-top: 10dvh;">
+                    <section >
                         <h2>About</h2>
                         <p>{{ aboutText }}</p>
                         <hr>
-
+                        <section class="stats-grid">
+                            <figure>
+                                <figcaption>Projects Completed</figcaption>
+                                <p class="stat-value">2<sup>+</sup></p>
+                            </figure>
+                            <figure>
+                                <figcaption>Experience</figcaption>
+                                <p class="stat-value">1<sup>yrs</sup></p>
+                            </figure>
+                        </section>
                     </section>
-
                 </template>
                 <template #sub>
-                    <h1> Bigger Sub stuff</h1>
+
                 </template>
 
             </LayoutContainer>
@@ -47,11 +54,23 @@
                 <template #badge-3></template>
                 <template #card-3></template>
             </StackCards>
-            <SubBox >
-                <template #content>
-                    <p style="font-size: 3rem;">
-                        {{ "Hello Subbox" }}
-                    </p>
+            <SubBox>
+                <template #content class="contact-section" aria-labelledby="contact-heading">
+                    <section class="contact-section" aria-labelledby="contact-heading">
+                        <div>
+                            <h3 id="contact-heading">
+                                Let's build<br>
+                                <strong>something great.</strong>
+                            </h3>
+                            <address>
+                                <a href="mailto:alex@alexrivera.dev">alex@alexrivera.dev</a>
+                            </address>
+                        </div>
+                        <a class="cta-link" href="mailto:alex@alexrivera.dev">
+                            <!-- <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> -->
+                            Get In Touch
+                        </a>
+                    </section>
                 </template>
             </SubBox>
         </section>
@@ -137,4 +156,82 @@
             flex-direction: column;
         }
     }
+
+    /* ── HERO HEADER ─────────────────────────────── */
+    .hero-role {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-muted);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 32px;
+    }
+
+    .hero-role em {
+        font-style: normal;
+        color: var(--color-accent);
+    }
+
+    /* ── STATS SECTION ───────────────────────────── */
+    .stats-section {
+        background: var(--color-surface);
+        border-radius: 20px;
+        padding: 26px 28px;
+        border: 1px solid var(--color-muted);
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--grid-col-sm);
+    }
+
+    .stats-grid figure {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .stat-value {
+        font-family: 'Playfair Display', serif;
+        /* font-size: calc(2 * var(--p-size)); */
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--color-text);
+        line-height: 1;
+    }
+
+    .stat-value sup {
+        color: var(--color-accent);
+    }
+
+    .stats-grid figcaption {
+        font-size: 11px;
+        color: var(--color-text);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    /* ── CONTACT SECTION ─────────────────────────── */
+    .contact-section {
+        padding: var(--inner-vert-pad-sm) var(--inner-hori-pad-sm);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .contact-section h3 {
+        color: var(--color-muted);
+    }
+
+    .contact-section h3 strong {
+        font-weight: 900;
+    }
+
+    .contact-section address {
+        font-weight: 600;
+        letter-spacing: 0.2rem;
+    }
+
 </style>
