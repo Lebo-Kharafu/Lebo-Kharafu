@@ -21,7 +21,7 @@
     <section :id="`nav-icons-${direction}`">
 
       <figure v-for="i in props.links" :class="[`icon-${direction}`]">
-        <img :src="i.icon" :alt="i.alt">
+        <Icon :icon="i.icon" />
       </figure>
 
     </section>

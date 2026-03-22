@@ -6,6 +6,7 @@
                 { icon: 'mdi:github', alt: 'image' },
                 { icon: 'jam:gitlab', alt: 'image' },
                 { icon: 'ic:baseline-tiktok', alt: 'image' },
+                { icon: 'mdi:facebook', alt: 'image' },
                 { icon: 'mdi:instagram', alt: 'image' },
                 { icon: 'simple-icons:kofi', alt: 'image' },
                 { icon: 'cib:codewars', alt: 'image' },
@@ -44,7 +45,9 @@
             </LayoutContainer>
         </section>
         <section id="side">
-            <StackCards width="100%" height="240px">
+            <!-- <StackCards width="100%" height="36dvh"> -->
+            <!-- <StackCards width="100%" height="14rem"> -->
+            <StackCards width="100%" height="230px">
                 <template #badge-1></template>
                 <template #card-1></template>
 
@@ -87,7 +90,7 @@
     import { useWindowSize } from '@vueuse/core';
     const { width } = useWindowSize();
     const navDirection = computed(() => {
-        if (width.value <= 780) return 'row'
+        if (width.value <= 830) return 'row'
         if (width.value <= 430) return 'col'
         return 'col'
     })
@@ -125,7 +128,7 @@
         ;
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 830px) {
         #page {
             display: grid;
             grid-template-rows: auto 2fr 1fr;
@@ -182,8 +185,8 @@
 
     .stats-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--grid-col-sm);
+        grid-template-columns: auto auto;
+        gap: calc(min(var(--grid-col-sm),1dvw));
     }
 
     .stats-grid figure {

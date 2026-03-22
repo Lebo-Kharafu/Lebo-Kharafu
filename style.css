@@ -35,7 +35,7 @@
   --h3-size: clamp(1rem, 2dvw, 1.5rem);
   --h4-size: clamp(0.8rem, 1.5dvw, 1rem);
   --h-bottom-gap: 1dvh;
-  --hr-gap: 2dvh;
+  --hr-gap: 1dvh;
 
   --grid-col-sm: 1rem;
   --grid-col-md: 2rem;
@@ -174,7 +174,8 @@ strong { color: var(--color-heading); font-weight: 500; }
 }
 
 hr {
-      width: 16rem;
+      width: calc(36%);
+      /* width: 16rem; */
       height: 3px;
       border: none;
       /* background: linear-gradient(90deg, var(--color-accent), transparent); */

@@ -20,7 +20,7 @@
         background-color: var(--color-surface);
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 830px) {
         #side-sub {
             width: 70%;
             height: 100%;
