@@ -39,7 +39,24 @@
                     </section>
                 </template>
                 <template #sub>
-
+        <!-- SKILLS -->
+        <section class="skills-section" aria-labelledby="skills-heading">
+          <h3 id="skills-heading">Tech-Stack &amp; Tools</h3>
+          <ul class="skills-list">
+            <li>React</li>
+            <li>Node.js</li>
+            <li>TypeScript</li>
+            <li>Next.js</li>
+            <li>PostgreSQL</li>
+            <li>GraphQL</li>
+            <li>Docker</li>
+            <li>Rust</li>
+            <li>AWS</li>
+            <li>WebAssembly</li>
+            <li>Figma</li>
+            <li>Redis</li>
+          </ul>
+        </section>
                 </template>
 
             </LayoutContainer>
@@ -236,5 +253,47 @@
         font-weight: 600;
         letter-spacing: 0.2rem;
     }
+
+        /* ── SKILLS SECTION ──────────────────────────── */
+    .skills-section {
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .skills-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+ 
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+ 
+    .skills-list li {
+      background: var(--color-accent);
+      border: var(--border-lg) solid var(--color-muted);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 11.5px;
+      font-weight: 600;
+      /* color: var(--color-muted); */
+      color: var(--color-heading);
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    
+    .skills-list li:hover { 
+        /* background: var(--color-heading);  */
+        border-color: var(--color-heading); 
+        /* color: var(--color-heading);  */
+        letter-spacing: 0.06em;
+    }
+  
 
 </style>
