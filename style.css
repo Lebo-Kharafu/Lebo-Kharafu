@@ -3,6 +3,9 @@
 :root {
   --color-bg:         #141429; 
   --color-surface:    #343d53;  
+  /* --color-muted:      white;   */
+  /* --color-muted:      black;   */
+  /* --color-muted:      darkgray;   */
   --color-muted:      #6e7588;  
   --color-text:       #eaeaea;  
   --color-heading:    #fefbfe; 
@@ -89,7 +92,8 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size:  var(--h1-size)}
 h2 { font-size: var(--h2-size) }
 h3 { font-size: var(--h3-size) }
-h4 { font-size: var(--h4-size); font-family: var(--font-body); }
+/* h4 { font-size: var(--h4-size); font-family: var(--font-body); } */
+h4 { font-size: var(--h4-size); }
 
 p { 
   color: var(--color-text);

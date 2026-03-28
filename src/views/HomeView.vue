@@ -13,16 +13,16 @@
             ]" :avatar="{ icon: 'mdi:home', alt: 'image' }" , :direction="navDirection" />
         </section>
         <section id="mid">
-            <!-- image="../../public/20260125_153406.jpg"  -->
             <LayoutContainer height="100%" width="100%" main-text-color='var(--color-surface)'
-                main-color='var(--color-surface)' sub-color='var(--color-surface)'>
+                image="../../public/main-bg.png" main-color='var(--color-surface)'
+                sub-color='var(--color-surface)'>
 
                 <template #main>
                     <section>
                         <h1>Lebo Kharafu</h1>
-                        <h3 class="hero-role">Junior <em>Software Engineer</em> &nbsp;·&nbsp; 1 yrs exp</h3>
+                        <h4 class="hero-role">Junior <em>Software Engineer</em> &nbsp;·&nbsp; 1 yrs exp</h4>
                     </section>
-                    <section >
+                    <section>
                         <h2>About</h2>
                         <p>{{ aboutText }}</p>
                         <hr>
@@ -39,32 +39,30 @@
                     </section>
                 </template>
                 <template #sub>
-        <!-- SKILLS -->
-        <section class="skills-section" aria-labelledby="skills-heading">
-          <h3 id="skills-heading">Tech-Stack &amp; Tools</h3>
-          <ul class="skills-list">
-            <li>React</li>
-            <li>Node.js</li>
-            <li>TypeScript</li>
-            <li>Next.js</li>
-            <li>PostgreSQL</li>
-            <li>GraphQL</li>
-            <li>Docker</li>
-            <li>Rust</li>
-            <li>AWS</li>
-            <li>WebAssembly</li>
-            <li>Figma</li>
-            <li>Redis</li>
-          </ul>
-        </section>
+                    <!-- SKILLS -->
+                    <section class="skills-section" aria-labelledby="skills-heading">
+                        <h3 id="skills-heading">Tech-Stack &amp; Tools</h3>
+                        <ul class="skills-list">
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>TypeScript</li>
+                            <li>Next.js</li>
+                            <li>PostgreSQL</li>
+                            <li>GraphQL</li>
+                            <li>Docker</li>
+                            <li>Rust</li>
+                            <li>AWS</li>
+                            <li>WebAssembly</li>
+                            <li>Figma</li>
+                            <li>Redis</li>
+                        </ul>
+                    </section>
                 </template>
 
             </LayoutContainer>
         </section>
         <section id="side">
-            <!-- <StackCards width="100%" height="36dvh"> -->
-            <!-- <StackCards width="100%" height="14rem"> -->
-            <StackCards width="100%" height="230px">
+            <StackCards width="100%" height="14rem">
                 <template #badge-1></template>
                 <template #card-1></template>
 
@@ -79,17 +77,12 @@
                     <section class="contact-section" aria-labelledby="contact-heading">
                         <div>
                             <h3 id="contact-heading">
-                                Let's build<br>
-                                <strong>something great.</strong>
+                                <strong>Get In Touch</strong>
                             </h3>
                             <address>
                                 <a href="mailto:alex@alexrivera.dev">alex@alexrivera.dev</a>
                             </address>
                         </div>
-                        <a class="cta-link" href="mailto:alex@alexrivera.dev">
-                            <!-- <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> -->
-                            Get In Touch
-                        </a>
                     </section>
                 </template>
             </SubBox>
@@ -179,9 +172,8 @@
 
     /* ── HERO HEADER ─────────────────────────────── */
     .hero-role {
-        font-size: 14px;
         font-weight: 600;
-        color: var(--color-muted);
+        /* color: var(--color-muted); */
         letter-spacing: 0.12em;
         text-transform: uppercase;
         margin-bottom: 32px;
@@ -203,7 +195,7 @@
     .stats-grid {
         display: grid;
         grid-template-columns: auto auto;
-        gap: calc(min(var(--grid-col-sm),1dvw));
+        gap: calc(min(var(--grid-col-sm), 1dvw));
     }
 
     .stats-grid figure {
@@ -254,46 +246,46 @@
         letter-spacing: 0.2rem;
     }
 
-        /* ── SKILLS SECTION ──────────────────────────── */
+    /* ── SKILLS SECTION ──────────────────────────── */
     .skills-section {
-      position: relative;
-      overflow: hidden;
+        position: relative;
+        overflow: hidden;
     }
- 
+
     .skills-section h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 18px;
+        font-family: 'Playfair Display', serif;
+        font-weight: 900;
+        line-height: 1.15;
+        margin-bottom: 18px;
     }
- 
+
     .skills-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
     }
- 
+
     .skills-list li {
-      background: var(--color-accent);
-      border: var(--border-lg) solid var(--color-muted);
-      border-radius: 8px;
-      padding: 5px 12px;
-      font-size: 11.5px;
-      font-weight: 600;
-      /* color: var(--color-muted); */
-      color: var(--color-heading);
-      letter-spacing: 0.04em;
-      transition: all 0.2s;
-      cursor: default;
+        background: var(--color-accent);
+        border: var(--border-lg) solid var(--color-muted);
+        border-radius: 8px;
+        padding: 5px 12px;
+        font-size: 11.5px;
+        font-weight: 600;
+        /* color: var(--color-muted); */
+        color: var(--color-heading);
+        letter-spacing: 0.04em;
+        transition: all 0.2s;
+        cursor: default;
     }
-    
-    .skills-list li:hover { 
+
+    .skills-list li:hover {
         /* background: var(--color-heading);  */
-        border-color: var(--color-heading); 
+        border-color: var(--color-heading);
         /* color: var(--color-heading);  */
         letter-spacing: 0.06em;
     }
-  
+
 
 </style>
