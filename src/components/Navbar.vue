@@ -1,51 +1,68 @@
 <script setup lang="ts">
-      import { Icon } from '@iconify/vue';
-      import type { Link } from '../interfaces/props/Links';
-      const props = withDefaults(
-        defineProps<{ links: Link[]; avatar: Link; direction: "row" | "col" }>(),
-        {
-          links: () => [
-            { icon: 'mdi:github', alt: 'image' },
-            { icon: 'mdi:linkedin', alt: 'image' }
-          ],
-          avatar: () => ({ icon: 'mdi-light:home', alt: 'image' }),
-          direction: 'col'
-        }
-      );
+  import { Icon } from '@iconify/vue';
+  import type { Link } from '../interfaces/props/Links';
+  const props = withDefaults(
+    defineProps<{ links: Link[]; avatar: Link; direction: "row" | "col" }>(),
+    {
+      links: () => [
+        { icon: 'mdi:github', alt: 'image' },
+        { icon: 'mdi:linkedin', alt: 'image' }
+      ],
+      avatar: () => ({ icon: 'mdi-light:home', alt: 'image' }),
+      direction: 'col'
+    }
+  );
 
 
 </script>
-    
+
 <template>
   <nav v-if="direction === 'row'" :id="`navbar-${direction}`" class="nav-gen">
     <section :id="`nav-icons-${direction}`">
 
       <figure v-for="i in props.links" :class="[`icon-${direction}`]">
-        <Icon :icon="i.icon" />
+        <a :href="i.url" target="_blank" rel="noopener noreferrer" class="nav-icon">
+          <Icon :icon="i.icon" />
+        </a>
       </figure>
 
     </section>
     <figure v-if="props.avatar.icon" id="avatar" :class="[`icon-${direction}`]">
-      <Icon :icon="props.avatar.icon" />
+      <a :href="props.avatar.url" target="_blank" rel="noopener noreferrer" class="nav-icon">
+        <Icon :icon="props.avatar.icon" />
+      </a>
     </figure>
   </nav>
-  
+
   <nav v-if="direction === 'col'" :id="`navbar-${direction}`" class="nav-gen">
     <section :id="`nav-icons-${direction}`">
-      
+
       <figure v-for="i in props.links" :class="[`icon-${direction}`]">
-        <Icon :icon="i.icon" />
+        <a :href="i.url" target="_blank" rel="noopener noreferrer" class="nav-icon">
+          <Icon :icon="i.icon" />
+        </a>
       </figure>
-      
+
     </section>
     <figure v-if="props.avatar.icon" id="avatar" :class="[`icon-${direction}`]">
-      <Icon :icon="props.avatar.icon" />
+      <a :href="props.avatar.url" target="_blank" rel="noopener noreferrer" class="nav-icon">
+        <Icon :icon="props.avatar.icon" />
+      </a>
     </figure>
   </nav>
 </template>
 
 
 <style scoped>
+
+  .nav-icon {
+    color: var(--color-heading);
+    transition: color var(--transition), opacity var(--transition);
+  }
+
+  .nav-icon:hover {
+    color: var(--color-accent);
+  }
 
   .nav-gen {
     background-color: var(--color-surface);

@@ -5,11 +5,11 @@
                 { icon: 'mdi:linkedin', alt: 'image' },
                 { icon: 'mdi:github', alt: 'image' },
                 { icon: 'jam:gitlab', alt: 'image' },
-                { icon: 'ic:baseline-tiktok', alt: 'image' },
-                { icon: 'mdi:facebook', alt: 'image' },
-                { icon: 'mdi:instagram', alt: 'image' },
-                { icon: 'simple-icons:kofi', alt: 'image' },
                 { icon: 'cib:codewars', alt: 'image' },
+                { icon: 'simple-icons:kofi', alt: 'image' },
+                { icon: 'mdi:instagram', alt: 'image' },
+                { icon: 'mdi:facebook', alt: 'image' },
+                { icon: 'ic:baseline-tiktok', alt: 'image' },
             ]" :avatar="{ icon: 'mdi:home', alt: 'image' }" , :direction="navDirection" />
         </section>
         <section id="mid">
@@ -23,7 +23,7 @@
                         <h4 class="hero-role">Junior <em>Software Engineer</em> &nbsp;·&nbsp; 1 yrs exp</h4>
                     </section>
                     <section>
-                        <h2>About</h2>
+                        <h2>About Me</h2>
                         <p>{{ aboutText }}</p>
                         <hr>
                         <section class="stats-grid">
@@ -50,10 +50,8 @@
                             <li>PostgreSQL</li>
                             <li>GraphQL</li>
                             <li>Docker</li>
-                            <li>Rust</li>
                             <li>AWS</li>
                             <li>WebAssembly</li>
-                            <li>Figma</li>
                             <li>Redis</li>
                         </ul>
                     </section>
@@ -80,7 +78,7 @@
                                 <strong>Get In Touch</strong>
                             </h3>
                             <address>
-                                <a href="mailto:alex@alexrivera.dev">alex@alexrivera.dev</a>
+                                <a href="mailto:alex@alexrivera.dev">Kharafu23@gmail.com</a>
                             </address>
                         </div>
                     </section>
@@ -105,7 +103,7 @@
         return 'col'
     })
 
-    const aboutText = ref("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim anim id est laborum.")
+    const aboutText = ref("I studied Computer Science student at University of Witswatersrand. My passion for technology and problem-solving has driven me to explore: Software Development & Design, Cybersecurity, Creative Coding, and recently Machine Learning, where I continuously seek to enhance my skills and knowledge. I am driven by a curiosity to solve complex problems and a commitment to continuous learning. My goal is to one day earn a Turing Award in Computer Science Research.")
 </script>
 
 
