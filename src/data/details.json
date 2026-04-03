@@ -1,0 +1,64 @@
+{
+  "personal": {
+    "name": "Lebo Kharafu",
+    "emailDisplay": "Kharafu23@gmail.com",
+    "rank": "Junior",
+    "role": "Software Engineer",
+    "about": "I studied Computer Science student at University of Witswatersrand. My passion for technology and problem-solving has driven me to explore: Software Development & Design, Cybersecurity, Creative Coding, and recently Machine Learning, where I continuously seek to enhance my skills and knowledge. I am driven by a curiosity to solve complex problems and a commitment to continuous learning. My goal is to one day earn a Turing Award in Computer Science Research.",
+    "email": "Kharafu23+portfolio@gmail.com",
+    "experience": 0.5,
+    "projects": 3
+  },
+  "skills": [
+    {"lang":"Java","url":"https://www.java.com"},
+    {"lang":"Vue3","url":"https://vuejs.org"},
+    {"lang":"Spring","url":"https://spring.io"},
+    {"lang":"P5.js","url":"https://p5js.org"},
+    {"lang":"TypeScript","url":"https://www.typescriptlang.org"},
+    {"lang":"Sqlite","url":"https://www.sqlite.org"},
+    {"lang":"Node.js","url":"https://nodejs.org"},
+    {"lang":"Python","url":"https://www.python.org/"},
+    {"lang":"Sql","url":"https://www.w3schools.com/sql/"},
+    {"lang":"c++","url":"https://isocpp.org/get-started"},
+    {"lang":"c#","url":"https://dotnet.microsoft.com/languages/csharp"}
+  ],
+  "socials": [
+    { "icon": "mdi:linkedin", "alt": "LinkedIn","url":"https://linkedin.com/in/Lebo-Kharafu" },
+    { "icon": "mdi:github", "alt": "GitHub","url":"https://github.com/Lebo-Kharafu" },
+    { "icon": "jam:gitlab", "alt": "GitLab","url":"" },
+    { "icon": "cib:codewars", "alt": "CodeWars","url":"" },
+    { "icon": "simple-icons:kofi", "alt": "Ko-fi","url":"https://ko-fi.com/lebokharafu" },
+    { "icon": "mdi:instagram", "alt": "Instagram","url":"https://instagram.com/lebzique" },
+    { "icon": "mdi:facebook", "alt": "Facebook","url":"https://facebook.com/Lebo.Kharafu.23" },
+    { "icon": "ic:baseline-tiktok", "alt": "TikTok","url":"https://www.tiktok.com/@kharafu23" }
+  ],
+  "avatar":{ "icon": "mdi:home", "alt": "Homepage Link", "url":"" },
+  "stackCards":{ 
+  "cards":[
+        {
+      "badge": "01",
+      "title": "Software Design",
+      "description": "Building scalable logic and focusing on clean, modular code fundamentals."
+    },
+    {
+      "badge": "02",
+      "title": "Creative Coding",
+      "description": "Playing with and making interactive, visually striking art with code."
+    },
+    {
+      "badge": "03",
+      "title": "Computer Science",
+      "description": "Exploring computational theory with a lifelong aspiration toward a Turing Award or Phd."
+    },
+    {
+      "badge": "04",
+      "title": "Machine Learning",
+      "description": "Training models and exploring AI-driven research solutions."
+    }
+  ]
+  },
+  "settings":{
+    "skillsPerPage": 4,
+    "stackCardsOffset":"3rem"
+  }
+}
