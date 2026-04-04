@@ -25,8 +25,8 @@
   "socials": [
     { "icon": "mdi:linkedin", "alt": "LinkedIn","url":"https://linkedin.com/in/Lebo-Kharafu" },
     { "icon": "mdi:github", "alt": "GitHub","url":"https://github.com/Lebo-Kharafu" },
-    { "icon": "jam:gitlab", "alt": "GitLab","url":"" },
-    { "icon": "cib:codewars", "alt": "CodeWars","url":"" },
+    { "icon": "jam:gitlab", "alt": "GitLab","url":"https://gitlab.com/Lebo-Kharafu" },
+    { "icon": "cib:codewars", "alt": "CodeWars","url":"https://www.codewars.com/users/Lebo-Kharafu" },
     { "icon": "simple-icons:kofi", "alt": "Ko-fi","url":"https://ko-fi.com/lebokharafu" },
     { "icon": "mdi:instagram", "alt": "Instagram","url":"https://instagram.com/lebzique" },
     { "icon": "mdi:facebook", "alt": "Facebook","url":"https://facebook.com/Lebo.Kharafu.23" },
