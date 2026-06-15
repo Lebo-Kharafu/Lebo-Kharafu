@@ -22,7 +22,7 @@
 
     @media (max-width: 830px) {
         .side-sub {
-            width: 70%;
+            width: 100%;
             height: 100%;
         }
     }

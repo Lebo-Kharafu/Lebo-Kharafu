@@ -1,14 +1,16 @@
 import { computed } from 'vue'
-import { useWindowSize } from '@vueuse/core'
+import { useMediaQuery } from '@vueuse/core'
 
 export function useResponsive() {
-  const { width } = useWindowSize()
+  const isMobileQuery = useMediaQuery('(max-width: 460px)')
+  const isTabletQuery = useMediaQuery('(max-width: 890px)')
   
-  const isMobile   = computed(() => width.value <= 460)
-  const isTablet   = computed(() => width.value <= 830 && width.value > 460)
-  const isDesktop  = computed(() => width.value > 830)
-  const navDirection = computed(() => width.value <= 830 ? 'row' : 'col')
-  const bigScreen  = computed(() => width.value > 460)
+  const isMobile = computed(() => isMobileQuery.value)
+  const isTablet = computed(() => isTabletQuery.value && !isMobileQuery.value)
+  const isDesktop = computed(() => !isTabletQuery.value)
+  
+  const navDirection = computed(() => isTabletQuery.value ? 'row' : 'col')
+  const bigScreen = computed(() => !isMobileQuery.value)
     
-  return { width, isMobile, isTablet, isDesktop, navDirection, bigScreen }
+  return { isMobile, isTablet, isDesktop, navDirection, bigScreen }
 }
