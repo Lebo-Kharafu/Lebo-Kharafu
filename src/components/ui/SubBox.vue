@@ -14,7 +14,7 @@
     .side-sub {
         padding: 1rem;
         width: 100%;
-        height: 50%;
+        height: 100%;
         border: var(--border-xl) solid var(--color-muted);
         border-radius: calc(var(--radius-lg));
         background-color: var(--color-surface);

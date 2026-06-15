@@ -22,7 +22,7 @@
   <section class="container">
 
     <section class="main-content">
-      <img v-if="image" :src="image" class="bg-img" />
+      <img v-if="image" :src="image" class="bg-img" alt="Background Image" />
       <article class="text-content">
         <div class="sub-spacer" v-if="bigScreen"></div>
         <div class="sub-pusher" v-if="bigScreen"></div>

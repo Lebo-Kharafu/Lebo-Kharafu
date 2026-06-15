@@ -4,14 +4,14 @@
             <Navbar :links="details.socials" :avatar="details.avatar" :direction="navDirection" />
         </section>
         <section id="mid">
-            <LayoutContainer height="100%" width="100%" main-text-color='var(--color-surface)' image="./main-bg.png"
+            <LayoutContainer height="100%" width="100%" main-text-color='var(--color-surface)' image="./main-bg.webp"
                 main-color='var(--color-surface)' sub-color='var(--color-surface)'>
 
                 <template #main>
                     <section>
                         <h1>{{ details.personal.name }}</h1>
-                        <h4 class="hero-role">{{ details.personal.rank }}&nbsp;<em>{{ details.personal.role
-                        }}</em>&nbsp;-&nbsp;{{ details.personal.experience }} yrs exp</h4>
+                        <h2 class="hero-role">{{ details.personal.rank }}&nbsp;<em>{{ details.personal.role
+                        }}</em>&nbsp;-&nbsp;{{ details.personal.experience }} yrs exp</h2>
                     </section>
                     <section>
                         <h2>About Me</h2>
@@ -36,23 +36,25 @@
             </LayoutContainer>
         </section>
         <section id="side">
-            <StackCards width="100%" height="14rem" :items="details.stackCards.cards.length"
-                :offset="details.settings.stackCardsOffset">
-                <template v-for="(card, index) in details.stackCards.cards" :key="index" v-slot:[`badge-${index+1}`]>
-                    <div style="font-weight: 900;">{{ card.badge }}</div>
-                </template>
+            <div class="side-top">
+                <StackCards width="100%" height="14rem" :items="details.stackCards.cards.length"
+                    :offset="details.settings.stackCardsOffset">
+                    <template v-for="(card, index) in details.stackCards.cards" :key="index" v-slot:[`badge-${index+1}`]>
+                        <div style="font-weight: 900;">{{ card.badge }}</div>
+                    </template>
 
-                <template v-for="(card, index) in details.stackCards.cards" :key="index" v-slot:[`card-${index+1}`]>
-                    <div
-                        style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                        <h2 style="margin: 0 0 0.5rem 0; font-family: 'Playfair Display', serif; font-size: 1.25rem;">{{
-                            card.title }}</h2>
-                        <p style="margin: 0; font-size: 0.85rem; line-height: 1.4; opacity: 0.85;">{{ card.description
-                        }}</p>
-                    </div>
-                </template>
-            </StackCards>
-            <SubBox>
+                    <template v-for="(card, index) in details.stackCards.cards" :key="index" v-slot:[`card-${index+1}`]>
+                        <div
+                            style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                            <h2 style="margin: 0 0 0.5rem 0; font-family: 'Playfair Display', serif; font-size: 1.25rem;">{{
+                                card.title }}</h2>
+                            <p style="margin: 0; font-size: 0.85rem; line-height: 1.4; opacity: 0.85;">{{ card.description
+                            }}</p>
+                        </div>
+                    </template>
+                </StackCards>
+            </div>
+            <SubBox class="side-bottom">
                 <template #content class="contact-section" aria-labelledby="contact-heading">
                     <section class="contact-section" aria-labelledby="contact-heading">
                         <div>
@@ -103,7 +105,21 @@
         grid-area: side;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 20px;
+        height: 100%;
+    }
+
+    .side-top {
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        flex-shrink: 0;
+    }
+
+    .side-bottom {
+        height: calc(40% - 20px);
+        flex-shrink: 0;
     }
 
     #page {
@@ -140,6 +156,17 @@
             padding: 0rem 0.5rem;
             flex-direction: row-reverse;
             gap: 1.5rem;
+            height: auto;
+        }
+
+        .side-top {
+            height: auto;
+            flex-shrink: 1;
+        }
+
+        .side-bottom {
+            height: auto;
+            flex-shrink: 1;
         }
 
     }
@@ -152,6 +179,7 @@
 
     /* ── HERO HEADER ─────────────────────────────── */
     .hero-role {
+        font-size: var(--h4-size);
         font-weight: 700;
         letter-spacing: 0.15rem;
         text-transform: uppercase;
@@ -234,5 +262,13 @@
     .contact-section address {
         font-weight: 600;
         letter-spacing: 0.2rem;
+    }
+
+    .contact-section address a {
+        color: var(--color-text);
+    }
+
+    .contact-section address a:hover {
+        color: var(--color-accent);
     }
 </style>
