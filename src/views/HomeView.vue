@@ -73,7 +73,6 @@
 </template>
 
 <script setup lang="ts">
-    import { computed } from "vue";
     import LayoutContainer from "../components/layout/LayoutContainer.vue";
     import Navbar from "../components/nav/Navbar.vue";
     import StackCards from "../components//ui/StackCards.vue";
@@ -81,13 +80,8 @@
     import TechStackList from "../components/ui/TechStackList.vue";
     import { details } from "../data/details";
 
-    import { useWindowSize } from '@vueuse/core';
-    const { width } = useWindowSize();
-    const navDirection = computed(() => {
-        if (width.value <= 830) return 'row'
-        if (width.value > 830) return 'col'
-        return 'col'
-    })
+    import { useResponsive } from "../composables/useResponsive";
+    const { navDirection } = useResponsive();
 </script>
 
 
@@ -134,7 +128,7 @@
         ;
     }
 
-    @media (max-width: 830px) {
+    @media (max-width: 890px) {
         #page {
             display: grid;
             grid-template-rows: auto 2fr 1fr;
@@ -154,19 +148,29 @@
         #side {
             display: flex;
             padding: 0rem 0.5rem;
-            flex-direction: row-reverse;
+            flex-direction: row;
             gap: 1.5rem;
             height: auto;
         }
 
         .side-top {
+            flex: 1;
+            min-width: 0;
             height: auto;
-            flex-shrink: 1;
         }
 
         .side-bottom {
+            flex: 1;
+            min-width: 0;
             height: auto;
-            flex-shrink: 1;
+        }
+
+        .contact-section {
+            padding: var(--inner-vert-pad-md) var(--inner-hori-pad-sm);
+        }
+
+        .contact-section address {
+            word-break: break-all;
         }
 
     }
@@ -174,6 +178,14 @@
     @media (max-width: 460px) {
         #side {
             flex-direction: column;
+        }
+
+        .side-top {
+            width: 100%;
+        }
+
+        .side-bottom {
+            width: 100%;
         }
     }
 
