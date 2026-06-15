@@ -1,9 +1,6 @@
 :root {
   --color-bg:         #141429; 
   --color-surface:    #343d53;  
-  /* --color-muted:      white;   */
-  /* --color-muted:      black;   */
-  /* --color-muted:      darkgray;   */
   --color-muted:      #6e7588;  
   --color-text:       #eaeaea;  
   --color-heading:    #fefbfe; 
@@ -76,9 +73,26 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#app{
+#app {
   width: 100dvw;
   height: 100dvh;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  transition: background var(--transition);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -105,7 +119,10 @@ address, a {
 }
 
 address:hover, 
-a:hover { color: var(--color-heading); text-decoration: underline; }
+a:hover { 
+  color: var(--color-heading); 
+  text-decoration: underline; 
+}
 
 strong { color: var(--color-heading); font-weight: 500; }
 
@@ -125,8 +142,7 @@ strong { color: var(--color-heading); font-weight: 500; }
   color: var(--color-heading);
 }
 .btn-primary:hover {
-  /* background-color: #e0070f; */
-  background-color: hsl(from var(--color-accent) h s l / 1.5); 
+  background-color: color-mix(in srgb, var(--color-accent) 85%, white); 
   color: var(--color-heading);
   box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
@@ -168,7 +184,7 @@ strong { color: var(--color-heading); font-weight: 500; }
 .text-heading { color: var(--color-heading); }
 
 ::selection {
-  background-color: hsl(from var(--color-accent) h s l / 1.0); 
+  background-color: var(--color-accent); 
   color: var(--color-heading);
 }
 
@@ -177,4 +193,3 @@ hr {
   height: 1px;
   background: var(--color-muted);
 }
-
