@@ -4,14 +4,14 @@
             <Navbar :links="details.socials" :avatar="details.avatar" :direction="navDirection" />
         </section>
         <section id="mid">
-            <LayoutContainer height="100%" width="100%" main-text-color='var(--color-surface)' image="./main-bg.png"
+            <LayoutContainer height="100%" width="100%" main-text-color='var(--color-surface)' image="./main-bg.webp"
                 main-color='var(--color-surface)' sub-color='var(--color-surface)'>
 
                 <template #main>
                     <section>
                         <h1>{{ details.personal.name }}</h1>
-                        <h4 class="hero-role">{{ details.personal.rank }}&nbsp;<em>{{ details.personal.role
-                        }}</em>&nbsp;-&nbsp;{{ details.personal.experience }} yrs exp</h4>
+                        <h2 class="hero-role">{{ details.personal.rank }}&nbsp;<em>{{ details.personal.role
+                        }}</em>&nbsp;-&nbsp;{{ details.personal.experience }} yrs exp</h2>
                     </section>
                     <section>
                         <h2>About Me</h2>
@@ -179,6 +179,7 @@
 
     /* ── HERO HEADER ─────────────────────────────── */
     .hero-role {
+        font-size: var(--h4-size);
         font-weight: 700;
         letter-spacing: 0.15rem;
         text-transform: uppercase;
@@ -261,5 +262,13 @@
     .contact-section address {
         font-weight: 600;
         letter-spacing: 0.2rem;
+    }
+
+    .contact-section address a {
+        color: var(--color-text);
+    }
+
+    .contact-section address a:hover {
+        color: var(--color-accent);
     }
 </style>
