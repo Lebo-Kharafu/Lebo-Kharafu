@@ -30,7 +30,7 @@
                     </section>
                 </template>
                 <template #sub>
-                    <TechStackList :skills="details.skills" :perPage="details.settings.skillsPerPage" />
+                    <TechStackList :experiences="details.experiences" :perPage="details.settings.skillsPerPage" />
                 </template>
 
             </LayoutContainer>

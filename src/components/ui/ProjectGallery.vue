@@ -68,7 +68,7 @@ onUnmounted(() => {
 <template>
   <div class="gallery-card" ref="galleryRef">
     <div class="gallery-header">
-      <span class="title">Projects Portfolio</span>
+      <span class="title">Projects &amp; Tech-Stack</span>
       <span class="badge">{{ projects.length }} projects</span>
       <span class="count">{{ filteredProjects.length }} / {{ projects.length }}</span>
     </div>

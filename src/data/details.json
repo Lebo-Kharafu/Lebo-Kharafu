@@ -22,6 +22,11 @@
     {"lang":"c++","url":"https://isocpp.org/get-started"},
     {"lang":"c#","url":"https://dotnet.microsoft.com/languages/csharp"}
   ],
+  "experiences": [
+    {"place":"Wits University","url":"https://www.wits.ac.za"},
+    {"place":"BBD Software","url":"https://bbdsoftware.com"},
+    {"place":"Vodacom Financial Services","url":"https://www.vodacom.co.za"}
+  ],
   "socials": [
     { "icon": "mdi:linkedin", "alt": "LinkedIn","url":"https://linkedin.com/in/Lebo-Kharafu" },
     { "icon": "mdi:github", "alt": "GitHub","url":"https://github.com/Lebo-Kharafu" },
@@ -58,7 +63,7 @@
   ]
   },
   "settings":{
-    "skillsPerPage": 4,
+    "skillsPerPage": 2,
     "stackCardsOffset":"3rem"
   }
 }
