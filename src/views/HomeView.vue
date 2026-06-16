@@ -37,7 +37,7 @@
         </section>
         <section id="side">
             <div class="side-top">
-                <StackCards width="100%" height="14rem" :items="details.stackCards.cards.length"
+                <StackCards width="100%" height="var(--stack-height, 100%)" :items="details.stackCards.cards.length"
                     :offset="details.settings.stackCardsOffset">
                     <template v-for="(card, index) in details.stackCards.cards" :key="index" v-slot:[`badge-${index+1}`]>
                         <div style="font-weight: 900;">{{ card.badge }}</div>
@@ -157,6 +157,7 @@
             flex: 4;
             min-width: 0;
             height: auto;
+            --stack-height: 24rem;
         }
 
         .side-bottom {
