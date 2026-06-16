@@ -41,22 +41,22 @@
   "stackCards":{ 
   "cards":[
         {
-      "badge": "01",
+      "badge": "Aspiration 01",
       "title": "Software Design",
       "description": "Building scalable logic and focusing on clean, modular code fundamentals."
     },
     {
-      "badge": "02",
+      "badge": "Aspiration 02",
       "title": "Creative Coding",
       "description": "Playing with and making interactive, visually striking art with code."
     },
     {
-      "badge": "03",
+      "badge": "Aspiration 03",
       "title": "Computer Science",
       "description": "Exploring computational theory with a lifelong aspiration toward a Turing Award or Phd."
     },
     {
-      "badge": "04",
+      "badge": "Aspiration 04",
       "title": "Machine Learning",
       "description": "Training models and exploring AI-driven research solutions."
     }
