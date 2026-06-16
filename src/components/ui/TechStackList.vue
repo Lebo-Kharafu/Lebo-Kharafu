@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import type { Skill } from "../../types/index";
+import type { Experience } from "../../types/index";
 
 const props = defineProps<{
-    skills: Skill[]
+    experiences: Experience[]
     perPage?: number
 }>();
 
 const perPageCount = computed(() => props.perPage || 6);
 const currentPage = ref(1);
 
-const totalPages = computed(() => Math.ceil(props.skills.length / perPageCount.value));
+const totalPages = computed(() => Math.ceil(props.experiences.length / perPageCount.value));
 const columnsCount = computed(() => Math.ceil(Math.sqrt(perPageCount.value)));
 const rowsCount = computed(() => Math.ceil(perPageCount.value / columnsCount.value));
 const multiPage = computed(() => totalPages.value > 1);
 
-const paginatedSkills = computed(() => {
+const paginatedExperiences = computed(() => {
     const start = (currentPage.value - 1) * perPageCount.value;
-    return props.skills.slice(start, start + perPageCount.value);
+    return props.experiences.slice(start, start + perPageCount.value);
 });
 
 const prevPage = () => {
@@ -31,7 +31,7 @@ const nextPage = () => {
 
 <template>
     <section class="skills-section">
-        <h3 class="skills-heading">Tech-Stack &amp; Tools</h3>
+        <h3 class="skills-heading">Education &amp; Experience</h3>
         
         <div class="skills-content">
             <div class="list-carousel-container">
@@ -42,7 +42,7 @@ const nextPage = () => {
                 </button>
                 
                 <ul class="skills-list" :style="{ gridTemplateColumns: `repeat(${columnsCount}, 1fr)` }">
-                    <li v-for="skill in paginatedSkills" :key="skill.lang">{{ skill.lang }}</li>
+                    <li v-for="exp in paginatedExperiences" :key="exp.place">{{ exp.place }}</li>
                 </ul>
 
                 <button class="nav-btn" @click="nextPage" :disabled="currentPage === totalPages" aria-label="Next Page" v-if="multiPage">

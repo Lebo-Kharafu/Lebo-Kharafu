@@ -3,6 +3,11 @@ export interface Skill {
   url?: string
 }
 
+export interface Experience {
+  place: string
+  url?: string
+}
+
 export interface SocialLink {
   icon: string
   alt: string
@@ -35,6 +40,7 @@ export interface PersonalInfo {
 export interface PortfolioDetails {
   personal: PersonalInfo
   skills: Skill[]
+  experiences: Experience[]
   socials: SocialLink[]
   avatar: SocialLink
   stackCards: { cards: StackCard[] }
