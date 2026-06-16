@@ -129,6 +129,11 @@
     }
 
     @media (max-width: 890px) {
+
+        #mid {
+            padding: 0rem 0.5rem;
+        }
+        
         #page {
             display: grid;
             grid-template-rows: auto 2fr 1fr;
@@ -143,6 +148,7 @@
 
         #nav {
             max-width: none;
+            padding: 0rem 0.5rem;
         }
 
         #side {
