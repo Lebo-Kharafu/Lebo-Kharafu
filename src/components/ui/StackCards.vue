@@ -77,25 +77,26 @@ const getStyle = (index: number) => {
         align-items: center;
         justify-content: center;
         width: 100%;
+        height: v-bind(height);
         padding: 0;
         margin: 0;
     }
 
     .cards-wrapper {
-        --stack-multiplier: calc(v-bind(numberOfCards) - 1);
-        height: calc(v-bind(height) + (v-bind(offset) * var(--stack-multiplier)));
+        height: 100%;
         width: v-bind(width);
         position: relative;
     }
 
     .card {
         --card-offset: v-bind(offset);
+        --stack-multiplier: calc(v-bind(numberOfCards) - 1);
         --card-radius: calc(var(--radius-xl) + 1.75%);
         margin: 0;
 
         position: absolute;
         width: 100%;
-        height: v-bind(height);
+        height: calc(100% - (var(--card-offset) * var(--stack-multiplier)));
         
         background-color: v-bind(color); 
         border: var(--border-sm) solid var(--color-muted);

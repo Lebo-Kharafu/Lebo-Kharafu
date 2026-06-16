@@ -37,7 +37,7 @@
         </section>
         <section id="side">
             <div class="side-top">
-                <StackCards width="100%" height="14rem" :items="details.stackCards.cards.length"
+                <StackCards width="100%" height="var(--stack-height, 100%)" :items="details.stackCards.cards.length"
                     :offset="details.settings.stackCardsOffset">
                     <template v-for="(card, index) in details.stackCards.cards" :key="index" v-slot:[`badge-${index+1}`]>
                         <div style="font-weight: 900;">{{ card.badge }}</div>
@@ -54,20 +54,7 @@
                     </template>
                 </StackCards>
             </div>
-            <SubBox class="side-bottom">
-                <template #content class="contact-section" aria-labelledby="contact-heading">
-                    <section class="contact-section" aria-labelledby="contact-heading">
-                        <div>
-                            <h3 id="contact-heading">
-                                <strong>Get In Touch</strong>
-                            </h3>
-                            <address>
-                                <a :href="'mailto:' + details.personal.email">{{ details.personal.emailDisplay }}</a>
-                            </address>
-                        </div>
-                    </section>
-                </template>
-            </SubBox>
+            <ProjectGallery class="side-bottom" :projects="projects" />
         </section>
     </section>
 </template>
@@ -75,10 +62,10 @@
 <script setup lang="ts">
     import LayoutContainer from "../components/layout/LayoutContainer.vue";
     import Navbar from "../components/nav/Navbar.vue";
-    import StackCards from "../components//ui/StackCards.vue";
-    import SubBox from "../components/ui/SubBox.vue";
+    import StackCards from "../components/ui/StackCards.vue";
     import TechStackList from "../components/ui/TechStackList.vue";
-    import { details } from "../data/details";
+    import ProjectGallery from "../components/ui/ProjectGallery.vue";
+    import { details,projects } from "../data/details";
 
     import { useResponsive } from "../composables/useResponsive";
     const { navDirection } = useResponsive();
@@ -93,6 +80,7 @@
 
     #mid {
         grid-area: mid;
+        min-height: 0;
     }
 
     #side {
@@ -101,6 +89,7 @@
         flex-direction: column;
         gap: 20px;
         height: 100%;
+        min-height: 0;
     }
 
     .side-top {
@@ -112,13 +101,13 @@
     }
 
     .side-bottom {
-        height: calc(40% - 20px);
-        flex-shrink: 0;
+        flex: 1;
+        min-height: 0;
     }
 
     #page {
         max-width: 100%;
-        min-height: 100%;
+        height: calc(100dvh - 1rem);
         padding: 0.5rem;
         display: grid;
         grid-template-columns: auto 2fr 1fr;
@@ -126,23 +115,34 @@
         grid-template-areas:
             "nav mid side"
         ;
+        overflow: hidden;
+        grid-template-rows: minmax(0, 1fr);
     }
 
     @media (max-width: 890px) {
+
+        #mid {
+            padding: 0rem 0.5rem;
+        }
+        
         #page {
             display: grid;
-            grid-template-rows: auto 2fr 1fr;
+            grid-template-rows: auto auto auto;
             grid-template-columns: 1fr;
             row-gap: 1rem;
+            height: auto;
+            min-height: 100%;
             grid-template-areas:
                 "nav"
                 "mid"
                 "side"
             ;
+            overflow: visible;
         }
 
         #nav {
             max-width: none;
+            padding: 0rem 0.5rem;
         }
 
         #side {
@@ -154,13 +154,14 @@
         }
 
         .side-top {
-            flex: 1;
+            flex: 4;
             min-width: 0;
             height: auto;
+            --stack-height: 24rem;
         }
 
         .side-bottom {
-            flex: 1;
+            flex: 6;
             min-width: 0;
             height: auto;
         }
