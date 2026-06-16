@@ -149,7 +149,9 @@ onUnmounted(() => {
 }
 
 .gallery-header .title {
-  font-weight: 600;
+   font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1rem;
   color: var(--color-heading);
 }
 

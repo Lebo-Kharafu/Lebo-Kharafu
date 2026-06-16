@@ -31,34 +31,36 @@ const nextPage = () => {
 
 <template>
     <section class="skills-section">
-        <h3 id="skills-heading">Tech-Stack &amp; Tools</h3>
+        <h3 class="skills-heading">Tech-Stack &amp; Tools</h3>
         
-        <div class="list-carousel-container">
-            <button class="nav-btn" @click="prevPage" :disabled="currentPage === 1" aria-label="Previous Page" v-if="multiPage">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            
-            <ul class="skills-list" :style="{ gridTemplateColumns: `repeat(${columnsCount}, 1fr)` }">
-                <li v-for="skill in paginatedSkills" :key="skill.lang">{{ skill.lang }}</li>
-            </ul>
+        <div class="skills-content">
+            <div class="list-carousel-container">
+                <button class="nav-btn" @click="prevPage" :disabled="currentPage === 1" aria-label="Previous Page" v-if="multiPage">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <ul class="skills-list" :style="{ gridTemplateColumns: `repeat(${columnsCount}, 1fr)` }">
+                    <li v-for="skill in paginatedSkills" :key="skill.lang">{{ skill.lang }}</li>
+                </ul>
 
-            <button class="nav-btn" @click="nextPage" :disabled="currentPage === totalPages" aria-label="Next Page" v-if="multiPage">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </div>
+                <button class="nav-btn" @click="nextPage" :disabled="currentPage === totalPages" aria-label="Next Page" v-if="multiPage">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
 
-        <div class="pagination-indicators" v-if="multiPage">
-            <span 
-                v-for="page in totalPages" 
-                :key="page" 
-                class="page-dash"
-                :class="{ active: page === currentPage }"
-                @click="currentPage = page"
-            ></span>
+            <div class="pagination-indicators" v-if="multiPage">
+                <span 
+                    v-for="page in totalPages" 
+                    :key="page" 
+                    class="page-dash"
+                    :class="{ active: page === currentPage }"
+                    @click="currentPage = page"
+                ></span>
+            </div>
         </div>
     </section>
 </template>
@@ -66,17 +68,33 @@ const nextPage = () => {
 <style scoped>
     .skills-section {
         position: relative;
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        width: 100%;
+        height: 100%;
     }
 
     .skills-heading {
+        margin: -1rem -1rem 0 -1rem;
+        padding: 0.7rem 1.2rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        
         font-family: 'Playfair Display', serif;
         font-weight: 900;
-        line-height: 1.15;
-        margin: 0;
+        color: var(--color-heading);
+        font-size: 1rem;
+    }
+
+    .skills-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
     }
 
     .list-carousel-container {
