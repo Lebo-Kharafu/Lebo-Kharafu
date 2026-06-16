@@ -1,26 +1,3 @@
 [
-  { "id": 0, "name": "API", "fullName": "Portfolio API", "year": "2025", "desc": "RESTful microservices with Spring Boot, JPA, OAuth2.", "tags": ["Java", "Spring"] },
-  { "id": 1, "name": "P5", "fullName": "P5 Creative Studio", "year": "2025", "desc": "Generative art and interactive sketches with P5.js.", "tags": ["P5.js", "Creative"] },
-  { "id": 2, "name": "Cyber", "fullName": "Security Toolkit", "year": "2024", "desc": "Port scanner, packet analyzer, encryption utilities.", "tags": ["Java", "Security"] },
-  { "id": 3, "name": "ML", "fullName": "ML Research Lab", "year": "2026", "desc": "Transformer models and explainable AI research.", "tags": ["Python", "ML", "NLP"] },
-  { "id": 4, "name": "Vue", "fullName": "Vue Dashboard", "year": "2025", "desc": "Interactive dashboard with Vue3 and D3 visualizations.", "tags": ["Vue", "D3"] },
-  { "id": 5, "name": "Data", "fullName": "Data Studio", "year": "2025", "desc": "Real-time data visualization with P5.js and WebSockets.", "tags": ["P5.js", "WebSocket"] },
-  { "id": 6, "name": "Cloud", "fullName": "Cloud Deployer", "year": "2025", "desc": "AWS deployment automation with Terraform and Docker.", "tags": ["AWS", "Docker"] },
-  { "id": 7, "name": "Sec", "fullName": "Secure Auth", "year": "2024", "desc": "OAuth2 and JWT authentication with Spring Security.", "tags": ["Java", "Security"] },
-  { "id": 8, "name": "AI", "fullName": "AI Assistant", "year": "2026", "desc": "Conversational AI with fine-tuned transformer models.", "tags": ["Python", "ML", "NLP"] },
-  { "id": 9, "name": "UI", "fullName": "UI Component Library", "year": "2025", "desc": "Reusable Vue components with Storybook integration.", "tags": ["Vue", "Storybook"] },
-  { "id": 10, "name": "DB", "fullName": "Database Optimizer", "year": "2024", "desc": "Query optimization and indexing for PostgreSQL.", "tags": ["Java", "SQL"] },
-  { "id": 11, "name": "QA", "fullName": "QA Automation", "year": "2025", "desc": "Test automation with Selenium and JUnit.", "tags": ["Java", "Testing"] },
-  { "id": 12, "name": "Pulse", "fullName": "Pulse Monitor", "year": "2025", "desc": "Real-time system monitoring with Python and Docker.", "tags": ["Python", "Docker"] },
-  { "id": 13, "name": "Nova", "fullName": "Nova Framework", "year": "2025", "desc": "Lightweight Vue framework with reactive state.", "tags": ["Vue", "JavaScript"] },
-  { "id": 14, "name": "Apex", "fullName": "Apex Analytics", "year": "2026", "desc": "ML-powered analytics platform on AWS.", "tags": ["Python", "ML", "AWS"] },
-  { "id": 15, "name": "Zen", "fullName": "Zen Meditation App", "year": "2025", "desc": "Calm app with P5.js visuals and Vue UI.", "tags": ["P5.js", "Vue"] },
-  { "id": 16, "name": "Flux", "fullName": "Flux Data Pipeline", "year": "2025", "desc": "ETL pipeline with Python, Docker, and AWS.", "tags": ["Python", "Docker", "AWS"] },
-  { "id": 17, "name": "Shield", "fullName": "Shield Firewall", "year": "2024", "desc": "Network firewall with Java and Spring Security.", "tags": ["Java", "Security"] },
-  { "id": 18, "name": "Orbit", "fullName": "Orbit Scheduler", "year": "2025", "desc": "Distributed job scheduler with Java and Spring.", "tags": ["Java", "Spring"] },
-  { "id": 19, "name": "Lunar", "fullName": "Lunar Design System", "year": "2025", "desc": "Vue design system with Storybook.", "tags": ["Vue", "Storybook"] },
-  { "id": 20, "name": "Solar", "fullName": "Solar Energy Monitor", "year": "2025", "desc": "P5.js data visualization for solar energy.", "tags": ["P5.js", "WebSocket"] },
-  { "id": 21, "name": "Echo", "fullName": "Echo Voice Assistant", "year": "2026", "desc": "NLP voice assistant with Python and ML.", "tags": ["Python", "ML", "NLP"] },
-  { "id": 22, "name": "Vertex", "fullName": "Vertex Database", "year": "2025", "desc": "Graph database with Java and SQL.", "tags": ["Java", "SQL"] },
-  { "id": 23, "name": "Nexus", "fullName": "Nexus API Gateway", "year": "2025", "desc": "API gateway with Spring and AWS.", "tags": ["Java", "Spring", "AWS"] }
+  { "id": 1, "name": "Vue-P5", "fullName": "VUEP5", "year": "2025", "desc": "Generative art and interactive games with P5.js and vue3.", "tags": ["P5.js", "Creative","Vue"] }
 ]

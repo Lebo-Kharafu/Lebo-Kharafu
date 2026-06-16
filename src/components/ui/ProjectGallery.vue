@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import type { Project } from '../../types';
 import ProjectItem from './ProjectItem.vue';
+import ProjectDetails from './ProjectDetails.vue';
 
 const props = defineProps<{
   projects: Project[]
@@ -9,6 +10,7 @@ const props = defineProps<{
 
 const currentFilter = ref('all');
 const activeProjectId = ref<number | null>(null);
+const activeProject = computed(() => props.projects.find(p => p.id === activeProjectId.value));
 const galleryRef = ref<HTMLElement | null>(null);
 
 // Extract all unique tags present in the projects to build the filter bar dynamically
@@ -104,6 +106,19 @@ onUnmounted(() => {
           <div>No projects to display.</div>
         </div>
       </div>
+      
+      <Transition name="fade">
+        <ProjectDetails
+          v-if="activeProject"
+          :fullName="activeProject.fullName"
+          :year="activeProject.year"
+          :desc="activeProject.desc"
+          :tags="activeProject.tags"
+          :url="activeProject.url"
+          :img="activeProject.img"
+          @close="closeProject"
+        />
+      </Transition>
     </div>
   </div>
 </template>
@@ -202,14 +217,15 @@ onUnmounted(() => {
 }
 
 .compact-grid {
+  flex: 1;
+  min-height: 0;
   display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-
- 
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-auto-rows: 100px;
   gap: 0.25rem;
   padding: 4px;
   background: var(--color-bg);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .compact-grid::-webkit-scrollbar {
@@ -243,5 +259,16 @@ onUnmounted(() => {
   .compact-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Slide-in details transition (fade) */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

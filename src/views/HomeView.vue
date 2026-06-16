@@ -80,6 +80,7 @@
 
     #mid {
         grid-area: mid;
+        min-height: 0;
     }
 
     #side {
@@ -88,6 +89,7 @@
         flex-direction: column;
         gap: 20px;
         height: 100%;
+        min-height: 0;
     }
 
     .side-top {
@@ -99,8 +101,8 @@
     }
 
     .side-bottom {
-        max-height: calc(40% - 20px);
-        flex-shrink: 0;
+        flex: 1;
+        min-height: 0;
     }
 
     #page {
@@ -113,6 +115,8 @@
         grid-template-areas:
             "nav mid side"
         ;
+        overflow: hidden;
+        grid-template-rows: minmax(0, 1fr);
     }
 
     @media (max-width: 890px) {
@@ -123,7 +127,7 @@
         
         #page {
             display: grid;
-            grid-template-rows: auto 2fr 1fr;
+            grid-template-rows: auto auto auto;
             grid-template-columns: 1fr;
             row-gap: 1rem;
             height: auto;
@@ -133,6 +137,7 @@
                 "mid"
                 "side"
             ;
+            overflow: visible;
         }
 
         #nav {

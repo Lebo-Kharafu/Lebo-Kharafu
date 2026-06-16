@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { Project } from '../../types';
-import ProjectDetails from './ProjectDetails.vue';
-
 defineProps<{
   project: Project
   isOpen: boolean
@@ -17,19 +15,6 @@ defineEmits<{
   <div class="cell" :class="{ open: isOpen }" @click="$emit('click')">
     <img v-if="project.img" :src="project.img" :alt="project.name" class="cell-img" />
     <span v-else class="cell-name">{{ project.name }}</span>
-
-    <Transition name="fade">
-      <ProjectDetails
-        v-if="isOpen"
-        :fullName="project.fullName"
-        :year="project.year"
-        :desc="project.desc"
-        :tags="project.tags"
-        :url="project.url"
-        :img="project.img"
-        @close="$emit('close')"
-      />
-    </Transition>
   </div>
 </template>
 
@@ -46,6 +31,8 @@ defineEmits<{
   text-align: center;
   cursor: pointer;
   transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
 .cell:hover {
@@ -70,16 +57,5 @@ defineEmits<{
 
 .cell:hover .cell-name {
   color: var(--color-heading);
-}
-
-/* Slide-in details transition (fade) */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.25s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>
