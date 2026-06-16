@@ -54,20 +54,7 @@
                     </template>
                 </StackCards>
             </div>
-            <SubBox class="side-bottom">
-                <template #content class="contact-section" aria-labelledby="contact-heading">
-                    <section class="contact-section" aria-labelledby="contact-heading">
-                        <div>
-                            <h3 id="contact-heading">
-                                <strong>Get In Touch</strong>
-                            </h3>
-                            <address>
-                                <a :href="'mailto:' + details.personal.email">{{ details.personal.emailDisplay }}</a>
-                            </address>
-                        </div>
-                    </section>
-                </template>
-            </SubBox>
+            <ProjectGallery class="side-bottom" :projects="projects" />
         </section>
     </section>
 </template>
@@ -75,10 +62,10 @@
 <script setup lang="ts">
     import LayoutContainer from "../components/layout/LayoutContainer.vue";
     import Navbar from "../components/nav/Navbar.vue";
-    import StackCards from "../components//ui/StackCards.vue";
-    import SubBox from "../components/ui/SubBox.vue";
+    import StackCards from "../components/ui/StackCards.vue";
     import TechStackList from "../components/ui/TechStackList.vue";
-    import { details } from "../data/details";
+    import ProjectGallery from "../components/ui/ProjectGallery.vue";
+    import { details,projects } from "../data/details";
 
     import { useResponsive } from "../composables/useResponsive";
     const { navDirection } = useResponsive();
@@ -112,13 +99,13 @@
     }
 
     .side-bottom {
-        height: calc(40% - 20px);
+        max-height: calc(40% - 20px);
         flex-shrink: 0;
     }
 
     #page {
         max-width: 100%;
-        min-height: 100%;
+        height: calc(100dvh - 1rem);
         padding: 0.5rem;
         display: grid;
         grid-template-columns: auto 2fr 1fr;
@@ -139,6 +126,8 @@
             grid-template-rows: auto 2fr 1fr;
             grid-template-columns: 1fr;
             row-gap: 1rem;
+            height: auto;
+            min-height: 100%;
             grid-template-areas:
                 "nav"
                 "mid"
@@ -160,13 +149,13 @@
         }
 
         .side-top {
-            flex: 1;
+            flex: 4;
             min-width: 0;
             height: auto;
         }
 
         .side-bottom {
-            flex: 1;
+            flex: 6;
             min-width: 0;
             height: auto;
         }
