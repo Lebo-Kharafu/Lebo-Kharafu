@@ -20,11 +20,11 @@
                         <section class="stats-grid">
                             <figure>
                                 <figcaption>Projects Completed</figcaption>
-                                <p class="stat-value">{{ details.personal.projects }}<sup>+ </sup></p>
+                                <p class="stat-value">{{ projects.length }}<sup>+ </sup></p>
                             </figure>
                             <figure>
                                 <figcaption>Experience</figcaption>
-                                <p class="stat-value">{{ details.personal.experience }}<sup> yrs </sup></p>
+                                <p class="stat-value">{{ getExperience() }}<sup> yrs </sup></p>
                             </figure>
                         </section>
                     </section>
@@ -69,6 +69,11 @@
 
     import { useResponsive } from "../composables/useResponsive";
     const { navDirection } = useResponsive();
+    const getExperience = () => {
+        const diffDays = (Date.now() - +new Date(2026, 0, 12)) / (1000 * 60 * 60 * 24);
+        return Number((diffDays / 365).toFixed(1));
+    };
+
 </script>
 
 

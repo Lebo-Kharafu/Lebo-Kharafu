@@ -224,8 +224,8 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   grid-auto-rows: 100px;
-  gap: 0.25rem;
-  padding: 4px;
+  gap: 0.75rem;
+  padding: 0.75rem;
   background: var(--color-bg);
   overflow-y: auto;
 }

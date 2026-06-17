@@ -17,8 +17,8 @@ defineEmits<{
   <div class="detail">
     <button class="close-btn" @click.stop="$emit('close')">✕</button>
     <div class="title">{{ fullName }}</div>
-    <div class="year">{{ year }}</div>
     <p class="desc">{{ desc }}</p>
+    <div class="year">{{ year }}</div>
     <div class="tags">
       <span v-for="tag in tags" :key="tag">{{ tag }}</span>
     </div>
