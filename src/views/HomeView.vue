@@ -11,7 +11,7 @@
                     <section>
                         <h1>{{ details.personal.name }}</h1>
                         <h2 class="hero-role">{{ details.personal.rank }}&nbsp;<em>{{ details.personal.role
-                        }}</em>&nbsp;-&nbsp;{{ details.personal.experience }} yrs exp</h2>
+                        }}</em>&nbsp;-&nbsp;{{ getExperience() }} yrs exp</h2>
                     </section>
                     <section>
                         <h2>About Me</h2>

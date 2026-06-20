@@ -1,3 +1,18 @@
 [
-  { "id": 1, "name": "Vue-P5", "fullName": "VUEP5", "year": "2025", "desc": "Generative art and interactive games with P5.js and vue3.", "tags": ["P5.js", "Creative","Vue"] }
+  {
+    "id": 1,
+    "name": "Vue-P5",
+    "fullName": "VUEP5",
+    "year": "2025",
+    "desc": "Generative art and interactive games with P5.js and vue3.",
+    "tags": ["Javascript", "P5.js", "Creative", "Vue"]
+  },
+  {
+    "id": 2,
+    "name": "Kharafu Times",
+    "fullName": "Kharafu Times Calendar",
+    "year": "2026",
+    "desc": "My personal availability calendar. People in my life can check my schedule, find a free day, and reach out to me directly.",
+    "tags": ["Typesript", "Supabase", "Vue", "pnpm"]
+  }
 ]

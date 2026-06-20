@@ -178,9 +178,7 @@ const nextPage = () => {
         padding: 0;
         min-height: calc(v-bind('rowsCount') * 2.3rem);
         width: calc(v-bind('columnsCount') * 7.8rem); 
-        /* min-width: calc(v-bind('columnsCount') * 7.8rem); */
         max-width: 100%; 
-        /* flex-shrink: 0;  */
     }
 
     .skills-list.fallback-list {
@@ -205,6 +203,5 @@ const nextPage = () => {
 
     .skills-list li:hover {
         border-color: var(--color-heading);
-        letter-spacing: 0.06em;
     }
 </style>
