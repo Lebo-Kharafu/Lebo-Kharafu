@@ -1,110 +1,153 @@
 <script setup lang="ts">
-  import { Icon } from '@iconify/vue';
-  import type { SocialLink } from '../../types/index';
-  const props = withDefaults(
-    defineProps<{ links: SocialLink[]; avatar: SocialLink; direction: "row" | "col" }>(),
-    {
-      links: () => [
-        { icon: 'mdi:github', alt: 'image' },
-        { icon: 'mdi:linkedin', alt: 'image' }
-      ],
-      avatar: () => ({ icon: 'mdi-light:home', alt: 'image' }),
-      direction: 'col'
-    }
-  );
+import { Icon } from '@iconify/vue';
+import type { NavbarProps } from '../../types';
 
+withDefaults(defineProps<NavbarProps>(), {
+  links: () => [
+    { icon: 'mdi:github', alt: 'GitHub profile', url: 'https://github.com/Lebo-Kharafu' },
+    { icon: 'mdi:linkedin', alt: 'LinkedIn profile', url: 'https://linkedin.com/in/Lebo-Kharafu' },
+  ],
+  avatar: () => ({ icon: 'mdi-light:home', alt: 'Home link', url: '/' }),
+  direction: 'col',
+});
 
+const isExternal = (url?: string): boolean => {
+  if (!url) return false;
+  return url.startsWith('http://') || url.startsWith('https://');
+};
 </script>
 
 <template>
-<nav :id="`navbar-${direction}`" :class="['nav-gen', `navbar-${direction}`]">
-    <section :id="`nav-icons-${direction}`">
-      <figure v-for="i in props.links" :key="i.icon" :class="[`icon-${direction}`]">
-        <a :href="i.url" target="_blank" rel="noopener noreferrer" class="nav-icon" :aria-label="i.alt">
-          <Icon :icon="i.icon" />
+  <nav :id="`navbar-${direction}`" :class="['nav-gen', `navbar-${direction}`]" aria-label="Main navigation">
+    <section :id="`nav-icons-${direction}`" class="nav-icons-group">
+      <figure v-for="item in links" :key="item.icon" :class="[`icon-${direction}`]">
+        <a
+          :href="item.url || '#'"
+          :target="isExternal(item.url) ? '_blank' : undefined"
+          :rel="isExternal(item.url) ? 'noopener noreferrer' : undefined"
+          class="nav-icon"
+          :aria-label="item.alt"
+        >
+          <Icon :icon="item.icon" aria-hidden="true" />
         </a>
       </figure>
-
     </section>
-    <figure v-if="props.avatar.icon" id="avatar" :class="[`icon-${direction}`]">
-      <a :href="props.avatar.url" target="_blank" rel="noopener noreferrer" class="nav-icon" :aria-label="avatar.alt">
-        <Icon :icon="props.avatar.icon" />
+
+    <figure v-if="avatar?.icon" id="avatar" :class="[`icon-${direction}`]">
+      <a
+        :href="avatar.url || '/'"
+        :target="isExternal(avatar.url) ? '_blank' : undefined"
+        :rel="isExternal(avatar.url) ? 'noopener noreferrer' : undefined"
+        class="nav-icon"
+        :aria-label="avatar.alt"
+      >
+        <Icon :icon="avatar.icon" aria-hidden="true" />
       </a>
     </figure>
   </nav>
 </template>
 
 <style scoped>
-  .nav-icon {
-    color: var(--color-heading);
-    transition: color var(--transition), opacity var(--transition);
-  }
+.nav-gen {
+  background-color: var(--color-surface);
+  border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+  box-shadow: var(--shadow-card);
+}
 
-  .nav-icon:hover {
-    color: var(--color-accent);
-  }
+.nav-icon {
+  color: var(--color-heading);
+  transition: color var(--transition), transform var(--transition), filter var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm, 4px);
+}
 
-  .nav-gen {
-    background-color: var(--color-surface);
-  }
+.nav-icon:hover {
+  color: var(--color-accent);
+  filter: drop-shadow(0 0 6px var(--color-accent));
+  transform: scale(1.15);
+}
 
-  .icon-row {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.nav-icon:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
 
-    width: clamp(20px, 5dvw, 30px);
-    height: clamp(20px, 5dvw, 30px);
-  }
+.icon-row {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(20px, 5dvw, 30px);
+  height: clamp(20px, 5dvw, 30px);
+}
 
-  #navbar-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+#navbar-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  padding: 0.5rem;
+}
 
-    height: 100%;
-    width: 100%;
-    border-radius: 25px;
-    padding: 0.5rem;
-  }
+#nav-icons-row {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(0.5rem, 5dvw, 3rem);
+}
 
-  #nav-icons-row {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: clamp(0.5rem, 5dvw, 3rem);
-  }
+.icon-col {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(20px, 5dvh, 30px);
+  height: clamp(20px, 5dvh, 30px);
+}
 
-  .icon-col {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#navbar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  padding: 0.5rem;
+}
 
-    width: clamp(20px, 5dvh, 30px);
-    height: clamp(20px, 5dvh, 30px);
-  }
+#nav-icons-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.5rem, 5dvh, 3rem);
+}
 
+/* Responsive safety fallback so navbar is always horizontal on mobile/tablet */
+@media (max-width: 890px) {
   #navbar-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    height: 100%;
-    width: 100%;
-    border-radius: 25px;
-    padding: 0.5rem;
+    flex-direction: row;
+    height: auto;
+    min-height: 48px;
+    padding: 0.5rem 1rem;
   }
 
   #nav-icons-col {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(0.5rem, 5dvh, 3rem);
+    flex-direction: row;
+    width: auto;
+    gap: clamp(0.5rem, 5dvw, 2rem);
   }
+
+  .icon-col {
+    width: clamp(20px, 5dvw, 30px);
+    height: clamp(20px, 5dvw, 30px);
+  }
+}
 </style>

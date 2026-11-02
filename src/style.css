@@ -1,29 +1,33 @@
 :root {
-  --color-bg:         #141429; 
-  --color-surface:    #343d53;  
-  --color-muted:      #6e7588;  
-  --color-text:       #eaeaea;  
-  --color-heading:    #fefbfe; 
-  --color-accent:     #c2060f;  
+  /* New Theme Tokens mapped to design system by default */
+  --color-bg:               var(--ds-surface-page, #151719); 
+  --color-surface:          var(--ds-surface-card-dark, #1e2227);  
+  --color-surface-elevated: var(--ds-surface-elevated, #2e2e3a);
+  --color-muted:            var(--ds-color-oslo-gray, #7f878d);  
+  --color-text:             var(--ds-color-iron, #d7d8d9);  
+  --color-heading:          #ffffff; 
+  --color-accent:           var(--ds-color-primary, hsl(var(--ds-primary-hue, 330) 70% 50%));  
 
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body:    'DM Sans', sans-serif;
+  --font-display: var(--ds-font-family, 'Montserrat', system-ui, -apple-system, sans-serif);
+  --font-body:    var(--ds-font-family, 'Montserrat', system-ui, -apple-system, sans-serif);
+  --font-mono:    var(--ds-font-mono, 'JetBrains Mono', 'Fira Code', monospace);
 
-  --radius-sm:  4px;
-  --radius-md:  8px;
-  --radius-lg:  16px;
-  --radius-xl: 25px;
+  --radius-sm:   var(--ds-radius-small, 4px);
+  --radius-md:   var(--ds-radius-medium, 8px);
+  --radius-lg:   var(--ds-radius-card, 16px);
+  --radius-xl:   25px;
+  --radius-pill: var(--ds-radius-pill, 9999px);
 
-  --border-sm: 0.25px;
-  --border-md: 0.5px;
-  --border-lg: 0.75px;
+  --border-sm: 1px;
+  --border-md: 1px;
+  --border-lg: 1px;
   --border-xl: 1px;
   --border-xxl: 2px;
 
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 32px rgba(194, 6, 15, 0.18);
+  --shadow-card: var(--ds-shadow-card, 0 4px 20px rgba(0, 0, 0, 0.35));
+  --shadow-glow: var(--ds-shadow-primary, 0 0 16px color-mix(in srgb, var(--ds-color-primary) 35%, transparent));
 
-  --transition: 0.25s ease;
+  --transition: var(--ds-transition, 0.15s ease-in-out);
   --max-width: 1100px;
 
   --p-size: 1rem;
@@ -51,6 +55,29 @@
 
   --inner-vert-pad-lg: 3rem;
   --inner-hori-pad-lg: 3rem;
+}
+
+/* Legacy theme override for comparison */
+html.theme-legacy {
+  --color-bg:         #141429; 
+  --color-surface:    #343d53;  
+  --color-surface-elevated: #343d53;
+  --color-muted:      #6e7588;  
+  --color-text:       #eaeaea;  
+  --color-heading:    #fefbfe; 
+  --color-accent:     #c2060f;  
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-xl:  25px;
+
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 32px rgba(194, 6, 15, 0.18);
+  --transition: 0.25s ease;
 }
 
 *, *::before, *::after {
@@ -87,7 +114,7 @@ body {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-surface);
+  background: var(--ds-color-charade, var(--color-surface));
   border-radius: var(--radius-md);
   transition: background var(--transition);
 }
@@ -99,16 +126,18 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   color: var(--color-heading);
   padding-bottom: var(--h-bottom-gap);
+  font-weight: 700;
 }
 
-h1 { font-size:  var(--h1-size)}
-h2 { font-size: var(--h2-size) }
-h3 { font-size: var(--h3-size) }
+h1 { font-size: var(--h1-size); letter-spacing: -0.02em; }
+h2 { font-size: var(--h2-size); }
+h3 { font-size: var(--h3-size); }
 h4 { font-size: var(--h4-size); }
 
 p { 
   color: var(--color-text);
   padding-bottom: var(--p-bottom-gap);
+  line-height: 1.6;
 }
 
 address, a {
@@ -124,26 +153,32 @@ a:hover {
   text-decoration: underline; 
 }
 
-strong { color: var(--color-heading); font-weight: 500; }
+strong { color: var(--color-heading); font-weight: 600; }
 
 .btn {
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   font-family: var(--font-body);
-  font-size: var(--btn-text-size);
-  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-xl);
   transition: all var(--transition);
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   text-align: center;
+  padding: 0.6rem 1.25rem;
+  letter-spacing: 0.04em;
 }
 
 .btn-primary {
   background-color: var(--color-accent);
-  color: var(--color-heading);
+  color: var(--ds-color-primary-contrast, #ffffff);
+  border-color: var(--color-accent);
 }
 .btn-primary:hover {
-  background-color: color-mix(in srgb, var(--color-accent) 85%, white); 
-  color: var(--color-heading);
+  background-color: var(--ds-color-primary-hover, color-mix(in srgb, var(--color-accent) 85%, white)); 
+  color: var(--ds-color-primary-contrast, #ffffff);
   box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
 }
@@ -151,13 +186,13 @@ strong { color: var(--color-heading); font-weight: 500; }
 .btn-ghost {
   background-color: transparent;
   color: var(--color-muted);
-  border: 1px solid var(--color-surface);
+  border: 1px solid var(--ds-color-charade, var(--color-surface));
 }
 
 .btn-ghost:hover {
   color: var(--color-heading);
-  border-color: var(--color-muted);
-  background-color: var(--color-surface);
+  border-color: var(--color-accent);
+  background-color: var(--ds-color-primary-subtle, var(--color-surface));
 }
 
 .tag-list {
@@ -167,16 +202,20 @@ strong { color: var(--color-heading); font-weight: 500; }
 }
 
 .tag {
-  background-color: rgba(52, 61, 83, 0.7);
-  border: 1px solid var(--color-surface);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--ds-color-charade, var(--color-surface));
   color: var(--color-text);
   border-radius: var(--radius-xl);
-  transition: border-color var(--transition), color var(--transition);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: border-color var(--transition), color var(--transition), background-color var(--transition);
 }
 
 .tag:hover {
   border-color: var(--color-accent);
-  color: var(--color-heading);
+  color: var(--color-accent);
+  background-color: var(--ds-color-primary-subtle, rgba(255, 255, 255, 0.08));
 }
 
 .text-accent  { color: var(--color-accent); }
@@ -185,11 +224,45 @@ strong { color: var(--color-heading); font-weight: 500; }
 
 ::selection {
   background-color: var(--color-accent); 
-  color: var(--color-heading);
+  color: var(--ds-color-primary-contrast, #ffffff);
 }
 
 hr {
   border: none;
   height: 1px;
-  background: var(--color-muted);
+  background: var(--ds-color-charade, var(--color-muted));
+}
+
+/* ==========================================================================
+   Modern Native CSS Progressive Enhancements (wrapped in @supports)
+   ========================================================================== */
+
+/* Native text balancing for headings without manual line-break tricks */
+@supports (text-wrap: balance) {
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+}
+
+/* Native orphan prevention for body copy */
+@supports (text-wrap: pretty) {
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* Native form controls accent tinting */
+@supports (accent-color: var(--color-accent)) {
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="range"] {
+    accent-color: var(--color-accent);
+  }
+}
+
+/* Native smooth overscroll containment */
+@supports (overscroll-behavior: contain) {
+  #page, .compact-grid, .detail {
+    overscroll-behavior: contain;
+  }
 }

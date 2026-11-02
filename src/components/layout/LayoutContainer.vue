@@ -1,196 +1,209 @@
 <script setup lang="ts">
-    import { useWindowSize } from '@vueuse/core';
-  import { computed } from 'vue';
-  defineProps({
-    mainTextColor: { type: String, default: 'black' },
-    subTextColor: { type: String, default: 'black' },
-    mainColor: { type: String, default: '#3d3d3d' },
-    subColor: { type: String, default: '#3d3d3d' },
-    height: { type: String, default: '500px' },
-    width: { type: String, default: '600px' },
-    image: String,
-  });
+import { useWindowSize } from '@vueuse/core';
+import { computed } from 'vue';
+import { NOTCHED_CORNER_PATH } from '../../constants/svg';
+import type { LayoutContainerProps } from '../../types';
 
-    const { width } = useWindowSize();
-    const bigScreen = computed(() => {
-        if (width.value <= 460) return false
-        return true
-    })
+withDefaults(defineProps<LayoutContainerProps>(), {
+  mainTextColor: 'var(--color-text)',
+  subTextColor: 'var(--color-text)',
+  mainColor: 'var(--color-surface)',
+  subColor: 'var(--color-surface)',
+  height: '500px',
+  width: '600px',
+});
+
+const { width } = useWindowSize();
+const bigScreen = computed(() => {
+  if (width.value <= 460) return false;
+  return true;
+});
 </script>
 
 <template>
   <section class="container">
-
     <section class="main-content">
-      <img v-if="image" :src="image" class="bg-img" alt="Background Image" />
+      <img v-if="image" :src="image" class="bg-img" alt="Background decoration" />
+      <div class="bg-overlay"></div>
       <article class="text-content">
-        <div class="sub-spacer" v-if="bigScreen"></div>
-        <div class="sub-pusher" v-if="bigScreen"></div>
+        <!-- Exclusion spacers to wrap content around the bottom-right sub-box cutout -->
+        <div v-if="bigScreen" class="sub-spacer" aria-hidden="true"></div>
+        <div v-if="bigScreen" class="sub-pusher" aria-hidden="true"></div>
         <slot name="main">
-          Default Main-Content
+          Default Main Content
         </slot>
       </article>
     </section>
 
     <aside class="sub-content">
       <slot name="sub">
-        Default Sub-Content
+        Default Sub Content
       </slot>
     </aside>
 
-    <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+    <!-- Clip path definition with path bound from constants -->
+    <svg width="0" height="0" class="clip-svg" aria-hidden="true">
       <defs>
         <clipPath id="notched-path" clipPathUnits="objectBoundingBox">
-          <path d="
-            M 0, 0.05 
-            A 0.05, 0.05 0 0 1 0.05, 0 
-            L 0.95, 0 
-            A 0.05, 0.05 0 0 1 1, 0.05 
-            L 1, 0.55 
-            A 0.05, 0.05 0 0 1 0.95, 0.6 
-            L 0.45, 0.6 
-            A 0.05, 0.05 0 0 0 0.4, 0.65 
-            L 0.4, 0.95 
-            A 0.05, 0.05 0 0 1 0.35, 1 
-            L 0.05, 1 
-            A 0.05, 0.05 0 0 1 0, 0.95 
-            Z" />
+          <path :d="NOTCHED_CORNER_PATH" />
         </clipPath>
       </defs>
     </svg>
-
   </section>
 </template>
 
 <style scoped>
-  * {
-    --sub-height: calc(40% - 20px);
-    --sub-width: calc(60% - 20px);
+* {
+  --sub-height: calc(40% - 20px);
+  --sub-width: calc(60% - 20px);
 
-    --push-size-top: 1.5rem;
-    --push-size-left: 2rem;
-    --pusher-width: calc(var(--push-size-left) + var(--sub-width));
-    --pusher-height: calc(var(--push-size-top) + var(--sub-height));
-  }
+  --push-size-top: 1.5rem;
+  --push-size-left: 2rem;
+  --pusher-width: calc(var(--push-size-left) + var(--sub-width));
+  --pusher-height: calc(var(--push-size-top) + var(--sub-height));
+}
 
-  .container {
-    --glob-mobile-height: 100%;
-    --glob-mobile-width: 100%;
-    --glob-padding: 1rem;
+.clip-svg {
+  position: absolute;
+  pointer-events: none;
+}
 
-    --container-height: v-bind(height);
-    --container-width: v-bind(width);
-    --container-border-rad: 14px;
+.container {
+  --glob-mobile-height: 100%;
+  --glob-mobile-width: 100%;
+  --glob-padding: 1.25rem;
 
-    --main-text-color: v-bind(mainTextColor);
-    --main-color: v-bind(mainColor);
-    --main-border-rad: 14px;
-    --main-height: 100%;
-    --main-width: 100%;
+  --container-height: v-bind(height);
+  --container-width: v-bind(width);
+  --container-border-rad: 14px;
 
-    --sub-text-color: v-bind(subTextColor);
-    --sub-color: v-bind(subColor);
-    --sub-border-rad: 20px;
-    --sub-bottom: 0px;
-    --sub-right: 0px;
+  --main-text-color: v-bind(mainTextColor);
+  --main-color: v-bind(mainColor);
+  --main-border-rad: 14px;
+  --main-height: 100%;
+  --main-width: 100%;
 
-    --spacer-width: 0px;
-    --spacer-height: 60%;
+  --sub-text-color: v-bind(subTextColor);
+  --sub-color: v-bind(subColor);
+  --sub-border-rad: 20px;
+  --sub-bottom: 0px;
+  --sub-right: 0px;
 
+  --spacer-width: 0px;
+  --spacer-height: 60%;
 
-    border-radius: var(--container-border-rad);
-    width: min(var(--container-width), 100%);
-    height: var(--container-height);
-    position: relative;
-  }
+  border-radius: var(--container-border-rad);
+  width: min(var(--container-width), 100%);
+  height: var(--container-height);
+  position: relative;
+}
 
-  .sub-spacer {
-    float: right;
-    width: var(--spacer-width);
-    height: var(--spacer-height);
-  }
+.sub-spacer {
+  float: right;
+  width: var(--spacer-width);
+  height: var(--spacer-height);
+}
 
+.sub-pusher {
+  float: right;
+  clear: right;
+  width: var(--pusher-width);
+  height: var(--pusher-height);
+  border-radius: var(--sub-border-rad);
+  background: transparent;
+  pointer-events: none;
+}
+
+/* Modern CSS shape-outside support when browser supports direct polygon float wrapping */
+@supports (shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%)) {
   .sub-pusher {
-    float: right;
-    clear: right;
-    width: var(--pusher-width);
-    height: var(--pusher-height);
-    border-radius: var(--sub-border-rad);
-    background: transparent;
-    pointer-events: none;
+    shape-outside: inset(0 0 0 0 round var(--sub-border-rad));
+    shape-margin: 0.5rem;
+  }
+}
+
+.main-content {
+  clip-path: url(#notched-path);
+  background: var(--main-color);
+  color: var(--main-text-color);
+  height: var(--main-height);
+  width: var(--main-width);
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-img {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(21, 23, 25, 0.88) 0%, rgba(15, 16, 17, 0.75) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.text-content {
+  padding: var(--glob-padding);
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.sub-content {
+  border-radius: var(--sub-border-rad);
+  background: var(--sub-color);
+  color: var(--sub-text-color);
+  height: var(--sub-height);
+  bottom: var(--sub-bottom);
+  width: var(--sub-width);
+  right: var(--sub-right);
+  position: absolute;
+  border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  padding: var(--glob-padding);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+@media (max-width: 460px) {
+  .container {
+    width: var(--glob-mobile-width);
+    height: var(--glob-mobile-height);
+    flex-direction: column;
+    display: flex;
+    gap: 1rem;
   }
 
   .main-content {
-    clip-path: url(#notched-path);
-    background: var(--main-color);
-    color: var(--main-text-color);
-    height: var(--main-height);
-    width: var(--main-width);
-
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  .bg-img {
-    position: absolute;
-    object-fit: cover; 
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }
-
-  .text-content {
-    padding: var(--glob-padding);
-    box-sizing: border-box;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
+    border-radius: var(--main-border-rad);
+    height: var(--glob-mobile-height);
+    width: var(--glob-mobile-width);
+    min-height: fit-content;
+    clip-path: none;
+    border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+    overflow: hidden;
   }
 
   .sub-content {
-    border-radius: var(--sub-border-rad);
-    background: var(--sub-color);
-    color: var(--sub-text-color);
-    height: var(--sub-height);
-    bottom: var(--sub-bottom);
-    width: var(--sub-width);
-    right: var(--sub-right);
-    position: absolute;
-
+    width: var(--glob-mobile-width);
     padding: var(--glob-padding);
-    justify-content: center;
-    align-items: center;
-    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    bottom: auto;
+    right: auto;
   }
-
-  @media (max-width: 460px) {
-    .container {
-      width: var(--glob-mobile-width);
-      height: var(--glob-mobile-height);
-      flex-direction: column;
-      display: flex;
-      gap: 1rem;
-    }
-
-    .main-content {
-      border-radius: var(--main-border-rad);
-      height: var(--glob-mobile-height);
-      width: var(--glob-mobile-width);
-      min-height: fit-content;
-      clip-path: none;
-
-      overflow: hidden;
-    }
-
-    .sub-content {
-      width: var(--glob-mobile-width);
-      padding: var(--glob-padding);
-      box-sizing: border-box;
-      position: relative;
-      bottom: auto;
-      right: auto;
-    }
-  }
+}
 </style>
