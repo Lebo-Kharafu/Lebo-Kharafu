@@ -134,20 +134,13 @@ const setPage = (page: number) => {
   margin: -1.25rem -1.25rem 0 -1.25rem;
   padding: 0.7rem 1.2rem;
   background: rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
-  border-top-left-radius: var(--radius-lg, 16px);
-  border-top-right-radius: var(--radius-lg, 16px);
-
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--color-heading);
+  border-bottom: 1px solid var(--color-charade);
+  border-top-left-radius: var(--radius-card);
+  border-top-right-radius: var(--radius-card);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
   font-size: 1rem;
-}
-
-@supports (text-wrap: balance) {
-  .skills-heading {
-    text-wrap: balance;
-  }
 }
 
 .skills-content {
@@ -168,9 +161,9 @@ const setPage = (page: number) => {
 
 .nav-btn {
   background: transparent;
-  border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
-  color: var(--color-muted);
-  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-charade);
+  color: var(--color-oslo-gray);
+  border-radius: var(--radius-medium);
   width: 1.875rem;
   height: 1.875rem;
   display: flex;
@@ -178,7 +171,7 @@ const setPage = (page: number) => {
   justify-content: center;
   flex-shrink: 0;
   cursor: pointer;
-  transition: all var(--transition);
+  transition: all var(--transition-default);
   padding: 0;
 }
 
@@ -188,10 +181,9 @@ const setPage = (page: number) => {
 }
 
 .nav-btn:hover:not(:disabled) {
-  border-color: var(--color-accent);
-  background: var(--color-accent);
-  color: var(--ds-color-primary-contrast, #ffffff);
-  box-shadow: var(--shadow-glow);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
 }
 
 .nav-btn:disabled {
@@ -213,23 +205,22 @@ const setPage = (page: number) => {
   height: 0.35rem;
   border: none;
   padding: 0;
-  border-radius: var(--radius-xl, 9999px);
-  background: var(--ds-color-charade, rgba(255, 255, 255, 0.2));
+  border-radius: var(--radius-pill);
+  background: var(--color-charade);
   opacity: 0.6;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-default);
   cursor: pointer;
 }
 
 .page-dash.active {
   width: 4rem;
-  background: var(--color-accent);
-  box-shadow: var(--shadow-glow);
+  background: var(--color-primary);
   opacity: 1;
 }
 
 .page-dash:hover:not(.active) {
   opacity: 0.9;
-  background: var(--color-text);
+  background: var(--color-iron);
 }
 
 .skills-list {
@@ -247,16 +238,16 @@ const setPage = (page: number) => {
 }
 
 .skills-list li {
-  background: var(--ds-color-primary-subtle, rgba(255, 255, 255, 0.04));
-  border: 1px solid var(--color-accent);
-  border-radius: var(--radius-xl, 9999px);
+  background: var(--color-primary-subtle);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-pill);
   padding: 0.35rem 0.85rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-family: var(--font-body);
-  color: var(--color-accent);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family);
+  color: var(--color-primary);
   letter-spacing: 0.04em;
-  transition: all var(--transition);
+  transition: all var(--transition-default);
   cursor: default;
   height: fit-content;
   display: inline-flex;
@@ -265,9 +256,8 @@ const setPage = (page: number) => {
 }
 
 .skills-list li:hover {
-  background: var(--color-accent);
-  color: var(--ds-color-primary-contrast, #ffffff);
-  box-shadow: var(--shadow-glow);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
   transform: translateY(-1px);
 }
 

@@ -1,5 +1,4 @@
-import './style.css';
-import './design-system.css';
+import './styles/tokens.css';
 import { createApp } from 'vue';
 import App from './App.vue';
 import { initThemeTokens } from './utils/date';

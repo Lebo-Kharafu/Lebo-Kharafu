@@ -137,9 +137,9 @@ onUnmounted(() => {
 .gallery-card {
   width: 100%;
   height: 100%;
-  border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
-  border-radius: var(--radius-lg, 16px);
-  background-color: var(--color-surface);
+  border: 1px solid var(--color-charade);
+  border-radius: var(--radius-card);
+  background-color: var(--surface-card-dark);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -151,47 +151,41 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+  border-bottom: 1px solid var(--color-charade);
   background: rgba(0, 0, 0, 0.25);
   flex-wrap: wrap;
-  font-family: var(--font-body);
+  font-family: var(--font-family);
 }
 
 .gallery-header .title {
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
   font-size: 1rem;
-  color: var(--color-heading);
-}
-
-@supports (text-wrap: balance) {
-  .gallery-header .title {
-    text-wrap: balance;
-  }
+  color: var(--color-white);
 }
 
 .gallery-header .badge {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-xl, 9999px);
+  border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.04);
-  color: var(--color-muted);
-  border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+  color: var(--color-oslo-gray);
+  border: 1px solid var(--color-charade);
 }
 
 .gallery-header .count {
-  font-size: 0.75rem;
-  font-family: var(--font-mono, monospace);
-  color: var(--color-accent);
-  font-weight: 600;
+  font-size: var(--font-size-small);
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .gallery-container {
   position: relative;
   flex: 1;
-  background: var(--ds-surface-page-dark, #0f1011);
+  background: var(--surface-page-dark);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -202,7 +196,7 @@ onUnmounted(() => {
   display: flex;
   gap: 0.3rem;
   padding: 0.4rem 0.6rem;
-  border-bottom: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+  border-bottom: 1px solid var(--color-charade);
   flex-shrink: 0;
   background: rgba(0, 0, 0, 0.2);
   flex-wrap: wrap;
@@ -210,35 +204,34 @@ onUnmounted(() => {
 
 .filter-btn {
   background: transparent;
-  border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
-  color: var(--color-muted);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.75rem;
+  border: 1px solid var(--color-charade);
+  color: var(--color-oslo-gray);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-small);
   padding: 0.15rem 0.6rem;
-  border-radius: var(--radius-xl, 9999px);
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: all var(--transition);
+  transition: all var(--transition-default);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .filter-btn:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  background: var(--ds-color-primary-subtle, rgba(255, 255, 255, 0.05));
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
 }
 
 .filter-btn:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 .filter-btn.active {
-  background: var(--color-accent);
-  color: var(--ds-color-primary-contrast, #ffffff);
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-glow);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border-color: var(--color-primary);
 }
 
 .compact-grid {
@@ -249,17 +242,26 @@ onUnmounted(() => {
   grid-auto-rows: 100px;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: var(--ds-surface-page-dark, #0f1011);
+  background: var(--surface-page-dark);
   overflow-y: auto;
 }
 
+/* Fallback: Webkit Custom Scrollbar */
 .compact-grid::-webkit-scrollbar {
   width: 4px;
-  background: var(--color-surface);
+  background: var(--surface-card-dark);
 }
 .compact-grid::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
+  background: var(--color-primary);
   border-radius: 2px;
+}
+
+/* Native CSS Standard Scrollbar */
+@supports (scrollbar-color: auto) {
+  .compact-grid {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--surface-card-dark);
+  }
 }
 
 .empty-state {
@@ -269,7 +271,7 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--color-muted);
+  color: var(--color-oslo-gray);
   padding: 2rem;
   text-align: center;
 }

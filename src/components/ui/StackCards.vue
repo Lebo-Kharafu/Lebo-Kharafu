@@ -7,8 +7,8 @@ const props = withDefaults(defineProps<StackCardsProps>(), {
   height: '240px',
   width: '250px',
   offset: '3rem',
-  textColor: 'var(--color-text)',
-  color: 'var(--color-surface)',
+  textColor: 'var(--color-white)',
+  color: 'var(--surface-card-dark)',
 });
 
 const cards = computed<CardItem[]>(() => {
@@ -101,7 +101,7 @@ const selectCard = (index: number) => {
 .card {
   --card-offset: v-bind(offset);
   --stack-multiplier: calc(v-bind(numberOfCards) - 1);
-  --card-radius: calc(var(--radius-xl) + 1.75%);
+  --card-radius: calc(25px + 1.75%);
   margin: 0;
 
   position: absolute;
@@ -109,7 +109,7 @@ const selectCard = (index: number) => {
   height: calc(100% - (var(--card-offset) * var(--stack-multiplier)));
 
   background-color: v-bind(color);
-  border: var(--border-sm, 1px) solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+  border: 1px solid var(--color-charade);
   border-radius: var(--card-radius);
   overflow: hidden;
   cursor: pointer;
@@ -119,7 +119,7 @@ const selectCard = (index: number) => {
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -142,27 +142,19 @@ const selectCard = (index: number) => {
   min-width: 3rem;
   min-height: 1.5rem;
 
-  border: 1px solid var(--color-accent);
-  background: var(--color-accent);
-  box-shadow: var(--shadow-glow);
-  border-radius: 3rem;
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  border-radius: var(--radius-pill);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  color: var(--ds-color-primary-contrast, #ffffff);
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.85rem;
+  color: var(--color-primary-contrast);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-small);
   z-index: 2;
-}
-
-@supports (backdrop-filter: blur(5px)) {
-  .pill-badge {
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-  }
 }
 
 .card-content {

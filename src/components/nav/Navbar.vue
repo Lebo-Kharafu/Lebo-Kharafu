@@ -49,28 +49,27 @@ const isExternal = (url?: string): boolean => {
 
 <style scoped>
 .nav-gen {
-  background-color: var(--color-surface);
-  border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+  background-color: var(--surface-card-dark);
+  border: 1px solid var(--color-charade);
   box-shadow: var(--shadow-card);
 }
 
 .nav-icon {
-  color: var(--color-heading);
-  transition: color var(--transition), transform var(--transition), filter var(--transition);
+  color: var(--icon-color);
+  transition: color var(--transition-default), transform var(--transition-default);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-sm, 4px);
+  border-radius: var(--radius-small);
 }
 
 .nav-icon:hover {
-  color: var(--color-accent);
-  filter: drop-shadow(0 0 6px var(--color-accent));
+  color: var(--icon-color-hover);
   transform: scale(1.15);
 }
 
 .nav-icon:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 

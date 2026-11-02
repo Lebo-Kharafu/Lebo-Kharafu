@@ -5,10 +5,10 @@ import { NOTCHED_CORNER_PATH } from '../../constants/svg';
 import type { LayoutContainerProps } from '../../types';
 
 withDefaults(defineProps<LayoutContainerProps>(), {
-  mainTextColor: 'var(--color-text)',
-  subTextColor: 'var(--color-text)',
-  mainColor: 'var(--color-surface)',
-  subColor: 'var(--color-surface)',
+  mainTextColor: 'var(--color-iron)',
+  subTextColor: 'var(--color-iron)',
+  mainColor: 'var(--surface-card-dark)',
+  subColor: 'var(--surface-card-dark)',
   height: '500px',
   width: '600px',
 });
@@ -24,9 +24,8 @@ const bigScreen = computed(() => {
   <section class="container">
     <section class="main-content">
       <img v-if="image" :src="image" class="bg-img" alt="Background decoration" />
-      <div class="bg-overlay"></div>
       <article class="text-content">
-        <!-- Exclusion spacers to wrap content around the bottom-right sub-box cutout -->
+        <!-- Exclusion spacers: float fallback to wrap content around the bottom-right sub-box cutout -->
         <div v-if="bigScreen" class="sub-spacer" aria-hidden="true"></div>
         <div v-if="bigScreen" class="sub-pusher" aria-hidden="true"></div>
         <slot name="main">
@@ -41,7 +40,7 @@ const bigScreen = computed(() => {
       </slot>
     </aside>
 
-    <!-- Clip path definition with path bound from constants -->
+    <!-- Clip path fallback definition with path bound from constants -->
     <svg width="0" height="0" class="clip-svg" aria-hidden="true">
       <defs>
         <clipPath id="notched-path" clipPathUnits="objectBoundingBox">
@@ -53,7 +52,12 @@ const bigScreen = computed(() => {
 </template>
 
 <style scoped>
-* {
+.clip-svg {
+  position: absolute;
+  pointer-events: none;
+}
+
+.container {
   --sub-height: calc(40% - 20px);
   --sub-width: calc(60% - 20px);
 
@@ -61,14 +65,7 @@ const bigScreen = computed(() => {
   --push-size-left: 2rem;
   --pusher-width: calc(var(--push-size-left) + var(--sub-width));
   --pusher-height: calc(var(--push-size-top) + var(--sub-height));
-}
 
-.clip-svg {
-  position: absolute;
-  pointer-events: none;
-}
-
-.container {
   --glob-mobile-height: 100%;
   --glob-mobile-width: 100%;
   --glob-padding: 1.25rem;
@@ -98,6 +95,7 @@ const bigScreen = computed(() => {
   position: relative;
 }
 
+/* Fallback float trick for text exclusion */
 .sub-spacer {
   float: right;
   width: var(--spacer-width);
@@ -114,8 +112,8 @@ const bigScreen = computed(() => {
   pointer-events: none;
 }
 
-/* Modern CSS shape-outside support when browser supports direct polygon float wrapping */
-@supports (shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%)) {
+/* Native CSS shape-outside wrapping (CSS Shapes Module) */
+@supports (shape-outside: inset(0 0 0 0 round 20px)) or (shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%)) {
   .sub-pusher {
     shape-outside: inset(0 0 0 0 round var(--sub-border-rad));
     shape-margin: 0.5rem;
@@ -123,15 +121,25 @@ const bigScreen = computed(() => {
 }
 
 .main-content {
+  /* Fallback: SVG clip-path trick */
   clip-path: url(#notched-path);
   background: var(--main-color);
   color: var(--main-text-color);
   height: var(--main-height);
   width: var(--main-width);
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+}
+
+/* Native CSS Corner Shape (CSS Backgrounds & Borders Level 4) when supported */
+@supports (corner-shape: notch) or (corner-bottom-right-shape: notch) {
+  .main-content {
+    clip-path: none;
+    border-radius: var(--main-border-rad);
+    border-bottom-right-radius: var(--sub-width) var(--sub-height);
+    corner-bottom-right-shape: notch;
+    corner-shape: round round notch round;
+  }
 }
 
 .bg-img {
@@ -141,14 +149,6 @@ const bigScreen = computed(() => {
   width: 100%;
   left: 0;
   top: 0;
-}
-
-.bg-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(21, 23, 25, 0.88) 0%, rgba(15, 16, 17, 0.75) 100%);
-  pointer-events: none;
-  z-index: 0;
 }
 
 .text-content {
@@ -169,7 +169,7 @@ const bigScreen = computed(() => {
   width: var(--sub-width);
   right: var(--sub-right);
   position: absolute;
-  border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+  border: 1px solid var(--color-charade);
   box-shadow: var(--shadow-card);
   overflow: hidden;
   padding: var(--glob-padding);
@@ -193,7 +193,7 @@ const bigScreen = computed(() => {
     width: var(--glob-mobile-width);
     min-height: fit-content;
     clip-path: none;
-    border: 1px solid var(--ds-color-charade, rgba(255, 255, 255, 0.08));
+    border: 1px solid var(--color-charade);
     overflow: hidden;
   }
 

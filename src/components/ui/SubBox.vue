@@ -2,8 +2,8 @@
 import type { SubBoxProps } from '../../types';
 
 withDefaults(defineProps<SubBoxProps>(), {
-  borderColor: 'var(--ds-color-charade, rgba(255, 255, 255, 0.08))',
-  backgroundColor: 'var(--color-surface)',
+  borderColor: 'var(--color-charade)',
+  backgroundColor: 'var(--surface-card-dark)',
 });
 </script>
 
@@ -21,7 +21,7 @@ withDefaults(defineProps<SubBoxProps>(), {
   width: 100%;
   height: 100%;
   border: 1px solid v-bind(borderColor);
-  border-radius: var(--radius-lg, 16px);
+  border-radius: var(--radius-card);
   background-color: v-bind(backgroundColor);
   box-shadow: var(--shadow-card);
 }

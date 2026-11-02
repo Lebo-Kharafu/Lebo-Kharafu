@@ -25,8 +25,8 @@ const yearsExperience = calculateExperience();
         height="100%"
         width="100%"
         image="./main-bg.webp"
-        main-color="var(--ds-surface-card-dark)"
-        sub-color="var(--ds-surface-card-dark)"
+        main-color="var(--surface-card-dark)"
+        sub-color="var(--surface-card-dark)"
       >
         <template #main>
           <header class="hero-header">
@@ -39,7 +39,7 @@ const yearsExperience = calculateExperience();
           <section class="about-section">
             <h2 class="section-title">About Me</h2>
             <p id="about-me">{{ details.personal.about }}</p>
-            <hr class="hero-divider" />
+            <div class="divider-accent hero-divider" role="separator" aria-hidden="true"></div>
             <section class="stats-grid" aria-label="Key Statistics">
               <figure class="stat-item">
                 <figcaption>Projects Completed</figcaption>
@@ -129,7 +129,7 @@ const yearsExperience = calculateExperience();
 
 #page {
   max-width: 100%;
-  height: calc(100dvh - 1rem);
+  height: calc(100vh - 1rem);
   padding: 0.5rem;
   display: grid;
   grid-template-columns: auto 2fr 1fr;
@@ -212,39 +212,54 @@ const yearsExperience = calculateExperience();
 
 .hero-name {
   margin: 0;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-white);
+  line-height: var(--line-height-tight);
 }
 
 .hero-role {
-  font-size: var(--h4-size);
-  font-weight: 700;
-  letter-spacing: 0.15rem;
+  font-family: var(--font-family);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12rem;
   text-transform: uppercase;
+  margin-top: 0.5rem;
   margin-bottom: 1.5rem;
+  color: var(--color-iron);
 }
 
 .hero-role em {
   font-style: normal;
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .section-title {
-  font-size: var(--h2-size);
+  font-family: var(--font-family);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
   margin-bottom: 0.5rem;
+}
+
+#about-me {
+  color: var(--color-iron);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
 }
 
 .hero-divider {
   width: 36%;
-  height: 2px;
-  background: var(--color-accent);
-  box-shadow: var(--shadow-glow);
-  margin: var(--hr-gap) 0;
+  margin: 1.25rem 0;
 }
 
 /* ── STATS SECTION ───────────────────────────── */
 .stats-grid {
   display: grid;
   grid-template-columns: auto auto;
-  gap: calc(min(var(--grid-col-sm), 1dvw));
+  gap: 1.5rem;
   margin-top: 1rem;
 }
 
@@ -255,28 +270,30 @@ const yearsExperience = calculateExperience();
 }
 
 .stat-value {
-  font-family: var(--font-display);
+  font-family: var(--font-family);
   font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
   line-height: 1;
+  margin: 0;
 }
 
 .stat-value sup {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .stats-grid figcaption {
-  font-size: 11px;
-  color: var(--color-muted);
-  font-weight: 600;
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  color: var(--color-oslo-gray);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 /* ── STACK CARD INNER SLOTS ─────────────────── */
 .card-slot-content {
-  padding: 1.5rem;
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -285,15 +302,17 @@ const yearsExperience = calculateExperience();
 
 .card-slot-title {
   margin: 0 0 0.5rem 0;
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
   font-size: 1.25rem;
+  color: var(--color-white);
 }
 
 .card-slot-desc {
   margin: 0;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  opacity: 0.9;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  color: var(--color-iron);
+  line-height: var(--line-height-normal);
 }
 </style>

@@ -1,0 +1,210 @@
+    /* ==========================================================================
+       1. variables.css — All Design Tokens & Dynamic Annual Colour Model
+       ========================================================================== */
+    :root {
+      /*
+       * ANNUAL DYNAMIC HUE MODEL
+       *
+       * H(d) = mod(
+       *   360(d - 1) / N + B
+       *   - A sin(2π(d - C) / N),
+       *   360
+       * )
+       *
+       * d = Current day of year
+       * N = Number of days in year
+       * A = Sinusoidal warp amplitude
+       * B = Hue rotation offset
+       * C = Warp centre
+       */
+
+      /* Configuration */
+      --year-length: 365;
+      --day-of-year: 349; /* Defaulting to Anchor 2 (Dec 15, 360° Red) to match board screenshots; toggleable to 288 (Oct 15) */
+
+      /* Anchor 1: October 15 */
+      --anchor-day-1: 288;
+      --anchor-hue-1: 330deg;
+
+      /* Anchor 2: December 15 */
+      --anchor-day-2: 349;
+      --anchor-hue-2: 360deg;
+
+      /* Derived warp centre */
+      --warp-center: calc(
+        (var(--anchor-day-1) + var(--anchor-day-2)) / 2
+      );
+
+      /* Unwarped hue at each anchor */
+      --base-hue-1: calc(
+        360deg * (var(--anchor-day-1) - 1) / var(--year-length)
+      );
+
+      --base-hue-2: calc(
+        360deg * (var(--anchor-day-2) - 1) / var(--year-length)
+      );
+
+      /* Sinusoidal values at each anchor */
+      --sin-1: sin(
+        calc(
+          1turn * (var(--anchor-day-1) - var(--warp-center))
+          / var(--year-length)
+        )
+      );
+
+      --sin-2: sin(
+        calc(
+          1turn * (var(--anchor-day-2) - var(--warp-center))
+          / var(--year-length)
+        )
+      );
+
+      /* Calculate amplitude from the two anchors */
+      --warp-amplitude: calc(
+        (
+          var(--base-hue-2) - var(--base-hue-1)
+          - (var(--anchor-hue-2) - var(--anchor-hue-1))
+        )
+        / (var(--sin-2) - var(--sin-1))
+      );
+
+      /* Calculate hue rotation offset */
+      --hue-offset: calc(
+        var(--anchor-hue-1) - var(--base-hue-1)
+        + var(--warp-amplitude) * var(--sin-1)
+      );
+
+      /* Calculate the hue for the current day */
+      --primary-hue: mod(
+        calc(
+          360deg * (var(--day-of-year) - 1) / var(--year-length)
+          + var(--hue-offset)
+          - var(--warp-amplitude) * sin(
+            calc(
+              1turn * (var(--day-of-year) - var(--warp-center))
+              / var(--year-length)
+            )
+          )
+        ),
+        360deg
+      );
+
+      /* Generated primary colour */
+      --color-primary: hsl(var(--primary-hue) 70% 50%);
+
+      /* Static Colours */
+      --color-port-gore: #1b1846;
+      --color-cod-gray: #151719;
+      --color-cod-gray-dark: #0f1011;
+      --color-charade: #2e2e3a;
+      --color-charade-light: #3d3d4d;
+      --color-oslo-gray: #7f878d;
+      --color-iron: #d7d8d9;
+      --color-white: #ffffff;
+      --color-black: #000000;
+
+      /* Primary Colour Variants */
+      --color-primary-hover: color-mix(
+        in srgb,
+        var(--color-primary) 88%,
+        black
+      );
+
+      --color-primary-active: color-mix(
+        in srgb,
+        var(--color-primary) 76%,
+        black
+      );
+
+      --color-primary-subtle: color-mix(
+        in srgb,
+        var(--color-primary) 12%,
+        transparent
+      );
+
+      --color-primary-muted: color-mix(
+        in srgb,
+        var(--color-primary) 45%,
+        var(--color-cod-gray)
+      );
+
+      --color-primary-light: color-mix(
+        in srgb,
+        var(--color-primary) 65%,
+        white
+      );
+
+      /* Fallback for browsers without contrast-color() */
+      --color-primary-contrast: #ffffff;
+      --color-primary-subtle-contrast: #ffffff;
+
+      /* Surfaces */
+      --surface-page: var(--color-cod-gray);
+      --surface-page-dark: var(--color-cod-gray-dark);
+      --surface-card-dark: #1e2227;
+      --surface-card-light: #ffffff;
+      --surface-elevated: var(--color-charade);
+
+      /* Typography */
+      --font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-size-hero: 3.8125rem;     /* 61px */
+      --font-size-title: 2rem;         /* 32px */
+      --font-size-subtitle: 1.25rem;   /* 20px */
+      --font-size-body: 1rem;          /* 16px */
+      --font-size-small: 0.75rem;      /* 12px */
+      --font-weight-light: 300;
+      --font-weight-regular: 400;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 600;
+      --font-weight-bold: 700;
+      --line-height-tight: 1.2;
+      --line-height-normal: 1.5;
+      --line-height-relaxed: 1.75;
+
+      /* Spacing */
+      --space-1: 0.25rem;  /* 4px */
+      --space-2: 0.5rem;   /* 8px */
+      --space-3: 0.75rem;  /* 12px */
+      --space-4: 1rem;     /* 16px */
+      --space-6: 1.5rem;   /* 24px */
+      --space-8: 2rem;     /* 32px */
+      --space-12: 3rem;    /* 48px */
+
+      /* Border Radius */
+      --radius-none: 0;
+      --radius-small: 4px;
+      --radius-medium: 8px;
+      --radius-card: 16px;
+      --radius-pill: 9999px;
+
+      /* Shadows & Glows */
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+      --shadow-primary: 0 0 16px color-mix(in srgb, var(--color-primary) 35%, transparent);
+
+      /* Transitions */
+      --transition-default: 0.15s ease-in-out;
+
+      /* Z-Index */
+      --z-header: 1;
+      --z-dropdown: 2;
+      --z-modal: 3;
+
+      /* Card Layout Tokens */
+      --card-padding: var(--space-6);
+      --card-gap: var(--space-6);
+      --card-media-horizontal-width: 44%;
+
+      /* Icon Colours */
+      --icon-color: var(--color-white);
+      --icon-color-muted: var(--color-oslo-gray);
+      --icon-color-hover: var(--color-primary);
+      --icon-color-active: var(--color-primary-active);
+    }
+
+    @supports (color: contrast-color(blue)) {
+      :root {
+        --color-primary-contrast: contrast-color(var(--color-primary));
+        --color-primary-subtle-contrast: contrast-color(var(--color-primary-subtle));
+      }
+    }

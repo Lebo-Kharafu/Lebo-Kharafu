@@ -67,62 +67,62 @@ defineEmits<{
 .detail {
   position: absolute;
   inset: 0;
-  background: rgba(15, 16, 17, 0.96);
+  background: var(--surface-page-dark);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0.75rem;
   text-align: center;
-  border-radius: var(--radius-sm, 4px);
+  border-radius: var(--radius-small);
   z-index: 5;
-  border: 1px solid var(--color-accent);
-  box-shadow: var(--shadow-glow);
+  border: 1px solid var(--color-charade);
   overflow-y: auto;
 }
 
-@supports (backdrop-filter: blur(12px)) {
-  .detail {
-    background: rgba(15, 16, 17, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-}
-
+/* WebKit Custom Scrollbar (Fallback) */
 .detail::-webkit-scrollbar {
   width: 4px;
-  background: var(--color-surface);
+  background: var(--surface-card-dark);
 }
 .detail::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
+  background: var(--color-primary);
   border-radius: 2px;
 }
 
+/* Native CSS Standard Scrollbar */
+@supports (scrollbar-color: auto) {
+  .detail {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--surface-card-dark);
+  }
+}
+
 .title {
-  font-family: var(--font-display);
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--color-heading);
-  line-height: 1.25;
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  line-height: var(--line-height-tight);
   padding-bottom: 2px;
   margin: 0;
 }
 
 .year {
   font-size: 0.7rem;
-  color: var(--color-muted);
+  color: var(--color-oslo-gray);
   margin-top: 0.15rem;
-  font-family: var(--font-mono, monospace);
+  font-family: var(--font-mono);
 }
 
 .desc {
   font-size: 0.75rem;
-  color: var(--color-text);
+  color: var(--color-iron);
   margin-top: 0.25rem;
   max-width: 90%;
-  line-height: 1.45;
+  line-height: var(--line-height-normal);
   padding-bottom: 0;
-  font-family: var(--font-body);
+  font-family: var(--font-family);
 }
 
 .tags {
@@ -134,14 +134,14 @@ defineEmits<{
 }
 
 .tags span {
-  background: var(--ds-color-primary-subtle, rgba(255, 255, 255, 0.05));
+  background: var(--color-primary-subtle);
   padding: 0.15rem 0.45rem;
-  border-radius: var(--radius-xl, 9999px);
+  border-radius: var(--radius-pill);
   font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
-  font-family: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  font-family: var(--font-family);
 }
 
 .project-link {
@@ -150,20 +150,20 @@ defineEmits<{
   gap: 0.35rem;
   margin-top: 0.5rem;
   font-size: 0.7rem;
-  font-weight: 600;
-  font-family: var(--font-body);
-  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family);
+  color: var(--color-primary);
   text-decoration: none;
   padding: 0.25rem 0.55rem;
-  border-radius: var(--radius-sm, 4px);
-  border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
-  transition: all var(--transition);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-primary);
+  transition: all var(--transition-default);
 }
 
 .project-link:hover {
-  background: var(--color-accent);
-  color: var(--ds-color-primary-contrast, #ffffff);
-  box-shadow: var(--shadow-glow);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  box-shadow: var(--shadow-primary);
   text-decoration: none;
 }
 
@@ -178,15 +178,15 @@ defineEmits<{
   right: 0.5rem;
   background: none;
   border: none;
-  color: var(--color-muted);
+  color: var(--color-oslo-gray);
   cursor: pointer;
   touch-action: manipulation;
   padding: 0.25rem;
-  border-radius: 4px;
+  border-radius: var(--radius-small);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: color var(--transition), background-color var(--transition);
+  transition: color var(--transition-default);
   z-index: 6;
 }
 
@@ -196,11 +196,10 @@ defineEmits<{
 }
 
 .close-btn:hover {
-  color: var(--color-accent);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-primary);
 }
 
 .close-btn:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-primary);
 }
 </style>
