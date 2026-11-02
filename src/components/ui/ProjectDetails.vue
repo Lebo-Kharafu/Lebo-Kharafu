@@ -136,7 +136,7 @@ defineEmits<{
 .tags span {
   background: var(--color-primary-subtle);
   padding: 0.15rem 0.45rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-small);
   font-size: 0.65rem;
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
@@ -155,7 +155,7 @@ defineEmits<{
   color: var(--color-primary);
   text-decoration: none;
   padding: 0.25rem 0.55rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-small);
   border: 1px solid var(--color-primary);
   transition: all var(--transition-default);
 }

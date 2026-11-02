@@ -169,7 +169,7 @@ onUnmounted(() => {
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-small);
   background: rgba(255, 255, 255, 0.04);
   color: var(--color-oslo-gray);
   border: 1px solid var(--color-charade);
@@ -210,7 +210,7 @@ onUnmounted(() => {
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-small);
   padding: 0.15rem 0.6rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-small);
   cursor: pointer;
   transition: all var(--transition-default);
   white-space: nowrap;

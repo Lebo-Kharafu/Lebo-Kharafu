@@ -205,7 +205,7 @@ const setPage = (page: number) => {
   height: 0.35rem;
   border: none;
   padding: 0;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-small);
   background: var(--color-charade);
   opacity: 0.6;
   transition: all var(--transition-default);
@@ -240,7 +240,7 @@ const setPage = (page: number) => {
 .skills-list li {
   background: var(--color-primary-subtle);
   border: 1px solid var(--color-primary);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-small);
   padding: 0.35rem 0.85rem;
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-semibold);

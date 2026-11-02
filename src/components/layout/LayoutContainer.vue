@@ -143,6 +143,7 @@ const bigScreen = computed(() => {
 }
 
 .bg-img {
+  filter: brightness(30%);
   position: absolute;
   object-fit: cover;
   height: 100%;
