@@ -1,0 +1,46 @@
+/* ==========================================================================
+       2. base.css — Global Resets & Defaults
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    ::selection {
+      background: var(--color-primary);
+      color: var(--color-primary-contrast);
+    }
+
+    body, figure, ul, ol {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    body {
+      font-family: var(--font-family);
+      font-size: var(--font-size-body);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-normal);
+      color: var(--color-white);
+      background-color: var(--color-cod-gray-dark);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input, button, textarea, select {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }

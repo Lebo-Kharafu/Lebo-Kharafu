@@ -1,16 +1,20 @@
-import { computed } from 'vue'
-import { useMediaQuery } from '@vueuse/core'
+import { computed, type ComputedRef } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
+import { BREAKPOINTS } from '../constants/breakpoints';
+import type { NavDirection } from '../types';
 
 export function useResponsive() {
-  const isMobileQuery = useMediaQuery('(max-width: 460px)')
-  const isTabletQuery = useMediaQuery('(max-width: 890px)')
-  
-  const isMobile = computed(() => isMobileQuery.value)
-  const isTablet = computed(() => isTabletQuery.value && !isMobileQuery.value)
-  const isDesktop = computed(() => !isTabletQuery.value)
-  
-  const navDirection = computed(() => isTabletQuery.value ? 'row' : 'col')
-  const bigScreen = computed(() => !isMobileQuery.value)
-    
-  return { isMobile, isTablet, isDesktop, navDirection, bigScreen }
+  const isMobileQuery = useMediaQuery(BREAKPOINTS.MOBILE_QUERY);
+  const isTabletQuery = useMediaQuery(BREAKPOINTS.TABLET_QUERY);
+
+  const isMobile: ComputedRef<boolean> = computed(() => isMobileQuery.value);
+  const isTablet: ComputedRef<boolean> = computed(() => isTabletQuery.value && !isMobileQuery.value);
+  const isDesktop: ComputedRef<boolean> = computed(() => !isTabletQuery.value);
+
+  const navDirection: ComputedRef<NavDirection> = computed(() =>
+    isTabletQuery.value ? 'row' : 'col'
+  );
+  const bigScreen: ComputedRef<boolean> = computed(() => !isMobileQuery.value);
+
+  return { isMobile, isTablet, isDesktop, navDirection, bigScreen };
 }
