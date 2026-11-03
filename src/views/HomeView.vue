@@ -120,6 +120,7 @@ const yearsExperience = calculateExperience();
   flex-direction: column;
   justify-content: flex-end;
   flex-shrink: 0;
+  --stack-height: 100%;
 }
 
 .side-bottom {
@@ -142,66 +143,6 @@ const yearsExperience = calculateExperience();
 @supports (height: 100dvh) {
   #page {
     height: calc(100dvh - 1rem);
-  }
-}
-
-@media (max-width: 890px) {
-  #mid {
-    padding: 0rem 0.5rem;
-  }
-
-  #page {
-    display: grid;
-    grid-template-rows: auto auto auto;
-    grid-template-columns: 1fr;
-    row-gap: 1rem;
-    height: auto;
-    min-height: 100%;
-    grid-template-areas:
-      'nav'
-      'mid'
-      'side';
-    overflow: visible;
-  }
-
-  #nav {
-    max-width: none;
-    padding: 0rem 0.5rem;
-  }
-
-  #side {
-    display: flex;
-    padding: 0rem 0.5rem;
-    flex-direction: row;
-    gap: 1.5rem;
-    height: auto;
-  }
-
-  .side-top {
-    flex: 4;
-    min-width: 0;
-    height: auto;
-    --stack-height: 24rem;
-  }
-
-  .side-bottom {
-    flex: 6;
-    min-width: 0;
-    height: auto;
-  }
-}
-
-@media (max-width: 460px) {
-  #side {
-    flex-direction: column;
-  }
-
-  .side-top {
-    width: 100%;
-  }
-
-  .side-bottom {
-    width: 100%;
   }
 }
 
@@ -246,7 +187,7 @@ const yearsExperience = calculateExperience();
 #about-me {
   color: var(--color-iron);
   font-size: var(--font-size-body);
-  line-height: var(--line-height-relaxed);
+  line-height: var(--line-height-normal);
   margin: 0;
 }
 
@@ -293,26 +234,162 @@ const yearsExperience = calculateExperience();
 
 /* ── STACK CARD INNER SLOTS ─────────────────── */
 .card-slot-content {
-  padding: var(--space-6);
+  padding: 2.75rem 1.25rem 0.75rem 1.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .card-slot-title {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.35rem 0;
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
   font-size: 1.25rem;
   color: var(--color-white);
+  line-height: 1.2;
 }
 
 .card-slot-desc {
   margin: 0;
   font-family: var(--font-family);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-small);
   color: var(--color-iron);
-  line-height: var(--line-height-normal);
+  line-height: 1.4;
+}
+
+/* ── TABLET & MOBILE MEDIA QUERIES ───────────── */
+@media (max-width: 890px) {
+  #page {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    height: auto;
+    min-height: 100%;
+    grid-template-areas:
+      'nav'
+      'mid'
+      'side';
+    overflow: visible;
+  }
+
+  #nav {
+    max-width: none;
+    padding: 0rem 0.5rem;
+  }
+
+  #mid {
+    padding: 0rem 0.5rem;
+    height: 38rem;
+  }
+
+  .hero-name {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  }
+
+  .hero-role {
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+  }
+
+  #about-me {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .hero-divider {
+    margin: 0.65rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    max-width: 100%;
+  }
+
+  .stat-item {
+    min-width: 0;
+  }
+
+  .stats-grid figcaption {
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+    white-space: normal;
+  }
+
+  .stat-value {
+    font-size: 1.45rem;
+    white-space: nowrap;
+  }
+
+  #side {
+    display: flex;
+    padding: 0rem 0.5rem;
+    flex-direction: row;
+    gap: 1.5rem;
+    height: auto;
+  }
+
+  .side-top {
+    flex: 4;
+    min-width: 0;
+    height: 25rem;
+    --stack-height: 25rem;
+  }
+
+  .side-bottom {
+    flex: 6;
+    min-width: 0;
+    height: 25rem;
+    min-height: 25rem;
+  }
+
+  .card-slot-content {
+    padding: 2.75rem 1.25rem 0.75rem 1.25rem;
+    justify-content: flex-start;
+  }
+
+  .card-slot-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+
+  .card-slot-desc {
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 520px) {
+  #mid {
+    height: auto;
+  }
+
+  #side {
+    flex-direction: column;
+  }
+
+  .side-top {
+    width: 100%;
+    height: 25rem;
+    --stack-height: 25rem;
+  }
+
+  .side-bottom {
+    width: 100%;
+    height: auto;
+  }
 }
 </style>

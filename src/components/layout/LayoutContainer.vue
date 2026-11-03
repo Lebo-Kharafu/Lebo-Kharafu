@@ -179,10 +179,10 @@ const bigScreen = computed(() => {
   display: flex;
 }
 
-@media (max-width: 460px) {
+@media (max-width: 520px) {
   .container {
     width: var(--glob-mobile-width);
-    height: var(--glob-mobile-height);
+    height: auto;
     flex-direction: column;
     display: flex;
     gap: 1rem;
@@ -190,16 +190,19 @@ const bigScreen = computed(() => {
 
   .main-content {
     border-radius: var(--main-border-rad);
-    height: var(--glob-mobile-height);
+    height: auto;
     width: var(--glob-mobile-width);
     min-height: fit-content;
     clip-path: none;
     border: 1px solid var(--color-charade);
-    overflow: hidden;
+    overflow: visible;
+    padding-bottom: 1.5rem;
   }
 
   .sub-content {
     width: var(--glob-mobile-width);
+    height: auto;
+    min-height: 9rem;
     padding: var(--glob-padding);
     box-sizing: border-box;
     position: relative;

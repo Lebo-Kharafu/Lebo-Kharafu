@@ -14,7 +14,6 @@ const totalPages = computed(() =>
 );
 
 const columnsCount = computed(() => Math.ceil(Math.sqrt(props.perPage)));
-const rowsCount = computed(() => Math.ceil(props.perPage / columnsCount.value));
 const multiPage = computed(() => totalPages.value > 1);
 
 const paginatedExperiences = computed(() => {
@@ -125,14 +124,13 @@ const setPage = (page: number) => {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   width: 100%;
   height: 100%;
 }
 
 .skills-heading {
   margin: -1.25rem -1.25rem 0 -1.25rem;
-  padding: 0.7rem 1.2rem;
+  padding: 0.75rem 1.25rem;
   background: rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid var(--color-charade);
   border-top-left-radius: var(--radius-card);
@@ -148,15 +146,18 @@ const setPage = (page: number) => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
+  padding: 0.5rem 0;
 }
 
 .list-carousel-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 0.75rem;
   width: 100%;
-  gap: 0.5rem;
+  max-width: 100%;
 }
 
 .nav-btn {
@@ -191,13 +192,48 @@ const setPage = (page: number) => {
   cursor: not-allowed;
 }
 
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.skills-list li {
+  background: var(--color-primary-subtle);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-small);
+  padding: 0.35rem 0.85rem;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family);
+  color: var(--color-primary);
+  letter-spacing: 0.04em;
+  transition: all var(--transition-default);
+  cursor: default;
+  height: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.skills-list li:hover {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  transform: translateY(-1px);
+}
+
 .pagination-indicators {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.375rem;
-  margin-top: -0.25rem;
-  width: 100%;
 }
 
 .page-dash {
@@ -221,44 +257,6 @@ const setPage = (page: number) => {
 .page-dash:hover:not(.active) {
   opacity: 0.9;
   background: var(--color-iron);
-}
-
-.skills-list {
-  list-style: none;
-  display: grid;
-  align-content: start;
-  align-items: start;
-  justify-items: center;
-  gap: 0.5rem;
-  margin: 0;
-  padding: 0;
-  min-height: calc(v-bind('rowsCount') * 2.3rem);
-  width: calc(v-bind('columnsCount') * 7.8rem);
-  max-width: 100%;
-}
-
-.skills-list li {
-  background: var(--color-primary-subtle);
-  border: 1px solid var(--color-primary);
-  border-radius: var(--radius-small);
-  padding: 0.35rem 0.85rem;
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-semibold);
-  font-family: var(--font-family);
-  color: var(--color-primary);
-  letter-spacing: 0.04em;
-  transition: all var(--transition-default);
-  cursor: default;
-  height: fit-content;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.skills-list li:hover {
-  background: var(--color-primary);
-  color: var(--color-primary-contrast);
-  transform: translateY(-1px);
 }
 
 .exp-link {

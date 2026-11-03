@@ -6,7 +6,7 @@ const props = withDefaults(defineProps<StackCardsProps>(), {
   items: 3,
   height: '240px',
   width: '250px',
-  offset: '3rem',
+  offset: '2rem',
   textColor: 'var(--color-white)',
   color: 'var(--surface-card-dark)',
 });
