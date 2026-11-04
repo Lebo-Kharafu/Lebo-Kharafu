@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ChevronDown } from 'lucide-vue-next';
 import type { ProjectGalleryProps } from '../../types';
 import ProjectItem from './ProjectItem.vue';
 import ProjectDetails from './ProjectDetails.vue';
@@ -9,6 +10,11 @@ const props = defineProps<ProjectGalleryProps>();
 const currentFilter = ref('all');
 const activeProjectId = ref<number | null>(null);
 const galleryRef = ref<HTMLElement | null>(null);
+const isFilterExpanded = ref(false);
+
+const toggleFilterExpanded = () => {
+  isFilterExpanded.value = !isFilterExpanded.value;
+};
 
 const activeProject = computed(() =>
   props.projects.find((p) => p.id === activeProjectId.value)
@@ -79,28 +85,48 @@ onUnmounted(() => {
     </header>
 
     <div class="gallery-container">
-      <nav class="filter-bar" aria-label="Project category filters">
+      <div class="filter-section">
+        <nav
+          class="filter-bar"
+          :class="{ expanded: isFilterExpanded }"
+          aria-label="Project category filters"
+        >
+          <button
+            type="button"
+            class="filter-btn"
+            :class="{ active: currentFilter === 'all' }"
+            :aria-pressed="currentFilter === 'all'"
+            @click="selectFilter('all')"
+          >
+            All
+          </button>
+          <button
+            v-for="tag in uniqueTags"
+            :key="tag"
+            type="button"
+            class="filter-btn"
+            :class="{ active: currentFilter === tag }"
+            :aria-pressed="currentFilter === tag"
+            @click="selectFilter(tag)"
+          >
+            {{ tag }}
+          </button>
+        </nav>
         <button
           type="button"
-          class="filter-btn"
-          :class="{ active: currentFilter === 'all' }"
-          :aria-pressed="currentFilter === 'all'"
-          @click="selectFilter('all')"
+          class="filter-toggle-btn"
+          :aria-expanded="isFilterExpanded"
+          :aria-label="isFilterExpanded ? 'Collapse tech-stack tags' : 'Expand tech-stack tags'"
+          @click="toggleFilterExpanded"
         >
-          All
+          <ChevronDown
+            class="chevron-icon"
+            :class="{ rotated: isFilterExpanded }"
+            :size="15"
+            aria-hidden="true"
+          />
         </button>
-        <button
-          v-for="tag in uniqueTags"
-          :key="tag"
-          type="button"
-          class="filter-btn"
-          :class="{ active: currentFilter === tag }"
-          :aria-pressed="currentFilter === tag"
-          @click="selectFilter(tag)"
-        >
-          {{ tag }}
-        </button>
-      </nav>
+      </div>
 
       <section class="compact-grid" aria-label="Project grid">
         <ProjectItem
@@ -192,14 +218,73 @@ onUnmounted(() => {
   box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
 }
 
-.filter-bar {
+.filter-section {
   display: flex;
-  gap: 0.3rem;
+  align-items: flex-start;
+  gap: 0.35rem;
   padding: 0.4rem 0.6rem;
   border-bottom: 1px solid var(--color-charade);
   flex-shrink: 0;
   background: rgba(0, 0, 0, 0.2);
+}
+
+.filter-bar {
+  display: flex;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 0;
   flex-wrap: wrap;
+  max-height: 1.85rem;
+  overflow: hidden;
+  transition: max-height var(--transition-default) ease;
+}
+
+.filter-bar.expanded {
+  max-height: 12rem;
+  overflow-y: auto;
+}
+
+.filter-bar::-webkit-scrollbar {
+  width: 3px;
+}
+.filter-bar::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.filter-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--color-charade);
+  color: var(--color-oslo-gray);
+  border-radius: var(--radius-small);
+  width: 1.65rem;
+  height: 1.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  transition: all var(--transition-default);
+}
+
+.filter-toggle-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+.filter-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.chevron-icon {
+  transition: transform var(--transition-default) ease;
+}
+
+.chevron-icon.rotated {
+  transform: rotate(180deg);
 }
 
 .filter-btn {
