@@ -134,11 +134,11 @@ const bigScreen = computed(() => {
 /* Native CSS Corner Shape (CSS Backgrounds & Borders Level 4) when supported */
 @supports (corner-shape: notch) or (corner-bottom-right-shape: notch) {
   .main-content {
-    clip-path: none;
+    /* Uses SVG clip-path so the concave fillet arc renders smoothly in Chromium */
+    clip-path: url(#notched-path);
     border-radius: var(--main-border-rad);
-    border-bottom-right-radius: var(--sub-width) var(--sub-height);
-    corner-bottom-right-shape: notch;
-    corner-shape: round round notch round;
+    /* Retained for CSS Leveecification readiness */
+    --corner-shape-ready: notch;
   }
 }
 

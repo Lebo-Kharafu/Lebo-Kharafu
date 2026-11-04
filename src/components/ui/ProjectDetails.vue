@@ -100,7 +100,7 @@ defineEmits<{
 
 .title {
   font-family: var(--font-family);
-  font-size: var(--font-size-small);
+  font-size: clamp(var(--font-size-subtitle), 2.2vw, var(--font-size-title));
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
   line-height: var(--line-height-tight);
@@ -109,14 +109,14 @@ defineEmits<{
 }
 
 .year {
-  font-size: 0.7rem;
+  font-size: clamp(0.75rem, 1.2vw, var(--font-size-small));
   color: var(--color-oslo-gray);
   margin-top: 0.15rem;
   font-family: var(--font-mono);
 }
 
 .desc {
-  font-size: 0.75rem;
+  font-size: clamp(var(--font-size-small), 1.5vw, var(--font-size-body));
   color: var(--color-iron);
   margin-top: 0.25rem;
   max-width: 90%;

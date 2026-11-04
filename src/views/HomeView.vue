@@ -148,26 +148,26 @@ const yearsExperience = calculateExperience();
 
 /* ── HERO HEADER ─────────────────────────────── */
 .hero-header {
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.5rem, 1.2vh, 1rem);
 }
 
 .hero-name {
   margin: 0;
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.75rem, 3.2vw, 3.5rem);
   color: var(--color-white);
   line-height: var(--line-height-tight);
 }
 
 .hero-role {
   font-family: var(--font-family);
-  font-size: var(--font-size-subtitle);
+  font-size: clamp(0.85rem, 1.2vw, var(--font-size-subtitle));
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.12rem;
   text-transform: uppercase;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: clamp(0.25rem, 0.5vh, 0.5rem);
+  margin-bottom: clamp(0.6rem, 1.5vh, 1.5rem);
   color: var(--color-iron);
 }
 
@@ -178,30 +178,30 @@ const yearsExperience = calculateExperience();
 
 .section-title {
   font-family: var(--font-family);
-  font-size: var(--font-size-title);
+  font-size: clamp(1.2rem, 1.8vw, var(--font-size-title));
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
-  margin-bottom: 0.5rem;
+  margin-bottom: clamp(0.25rem, 0.5vh, 0.5rem);
 }
 
 #about-me {
   color: var(--color-iron);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-normal);
+  font-size: clamp(1.125rem, 0.95vw, var(--font-size-body));
+  line-height: clamp(1.35, 1.5vw, var(--line-height-normal));
   margin: 0;
 }
 
 .hero-divider {
   width: 36%;
-  margin: 1.25rem 0;
+  margin: clamp(0.5rem, 1.2vh, 1.25rem) 0;
 }
 
 /* ── STATS SECTION ───────────────────────────── */
 .stats-grid {
   display: grid;
   grid-template-columns: auto auto;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  margin-top: clamp(0.5rem, 1.2vh, 1rem);
 }
 
 .stat-item {
@@ -212,7 +212,7 @@ const yearsExperience = calculateExperience();
 
 .stat-value {
   font-family: var(--font-family);
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
   line-height: 1;
@@ -225,7 +225,7 @@ const yearsExperience = calculateExperience();
 
 .stats-grid figcaption {
   font-family: var(--font-family);
-  font-size: var(--font-size-small);
+  font-size: clamp(0.62rem, 0.8vw, var(--font-size-small));
   color: var(--color-oslo-gray);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.08em;
@@ -254,7 +254,7 @@ const yearsExperience = calculateExperience();
 .card-slot-desc {
   margin: 0;
   font-family: var(--font-family);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-body);
   color: var(--color-iron);
   line-height: 1.4;
 }
@@ -301,7 +301,7 @@ const yearsExperience = calculateExperience();
   }
 
   #about-me {
-    font-size: 0.88rem;
+    font-size: 1.125rem;
     line-height: 1.45;
   }
 
@@ -367,7 +367,7 @@ const yearsExperience = calculateExperience();
   }
 
   .card-slot-desc {
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     line-height: 1.35;
   }
 }
